@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Logo click to home functionality
 document.addEventListener('DOMContentLoaded', function () {
   const logoLink = document.querySelector('.logo-link');
-
+  
   if (logoLink) {
     logoLink.addEventListener('click', function (e) {
       e.preventDefault();
@@ -423,6 +423,25 @@ document.addEventListener('DOMContentLoaded', function () {
         top: 0,
         behavior: 'smooth',
       });
+    });
+  }
+});
+
+// HOCl button scroll functionality
+document.addEventListener('DOMContentLoaded', function () {
+  const hoclButton = document.querySelector('.hocl-button');
+  
+  if (hoclButton) {
+    hoclButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      const hoclSection = document.querySelector('.hocl-section');
+      if (hoclSection) {
+        const offsetTop = hoclSection.offsetTop - 80; // Account for fixed navbar
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth',
+        });
+      }
     });
   }
 });

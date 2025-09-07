@@ -508,6 +508,41 @@ em {
   backdrop-filter: blur(2px);
 }
 
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.hocl-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--carolina-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 25px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hocl-button:hover {
+  background: var(--carolina-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hocl-button i {
+  font-size: 0.8rem;
+}
+
 .feature-text {
   font-size: 1.3rem;
   margin-bottom: 0.8rem;
@@ -1290,6 +1325,10 @@ em {
 
   .hero-description p {
     margin: 0 auto;
+  }
+
+  .hero-buttons {
+    align-items: center;
   }
 
   .hero-title {
