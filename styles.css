@@ -641,6 +641,65 @@ em {
   background: var(--light-gray);
 }
 
+/* Hypochlorous Acid Section */
+.hocl-section {
+  padding: 120px 0;
+  background: var(--white);
+}
+
+.hocl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 3rem;
+}
+
+.hocl-category {
+  background: var(--light-gray);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--carolina-blue);
+  box-shadow: var(--shadow);
+}
+
+.hocl-category h3 {
+  color: var(--carolina-blue);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+}
+
+.hocl-category h3 i {
+  font-size: 1.6rem;
+}
+
+.hocl-feature {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.hocl-feature:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.hocl-feature h4 {
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.hocl-feature p {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
 .about-content {
   max-width: 800px;
   margin: 0 auto;
@@ -1178,6 +1237,15 @@ em {
 
   .benefits-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hocl-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hocl-category {
+    padding: 20px;
   }
 
   .contact-content {
