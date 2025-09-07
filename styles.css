@@ -502,10 +502,12 @@ em {
   font-weight: 400;
   max-width: 600px;
   margin: 0;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  border-radius: 8px;
-  backdrop-filter: blur(2px);
+  background: linear-gradient(135deg, rgba(153, 186, 221, 0.15), rgba(123, 163, 199, 0.1));
+  padding: 25px 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(153, 186, 221, 0.3);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .hero-buttons {
