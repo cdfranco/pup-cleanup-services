@@ -486,7 +486,22 @@ em {
 }
 
 .hero-features {
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-description {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.hero-description p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--white);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .feature-text {
