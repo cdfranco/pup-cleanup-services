@@ -1063,7 +1063,7 @@ em {
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 160px;
+    top: 120px;
     flex-direction: column;
     background-color: var(--white);
     width: 100%;
@@ -1092,12 +1092,12 @@ em {
   }
 
   .nav-container {
-    height: 160px;
-    padding: 30px 20px;
+    height: 120px;
+    padding: 20px 20px;
   }
 
   .logo {
-    height: 80px;
+    height: 60px;
     width: auto;
   }
 
@@ -1189,8 +1189,12 @@ em {
   }
 
   .hero {
-    padding: 160px 0 100px;
-    min-height: 80vh;
+    padding: 200px 0 100px;
+    min-height: 85vh;
+  }
+
+  .hero-container {
+    padding-top: 40px;
   }
 
   .hero-title {
