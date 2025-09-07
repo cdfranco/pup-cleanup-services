@@ -1189,12 +1189,12 @@ em {
   }
 
   .hero {
-    padding: 200px 0 100px;
+    padding: 170px 0 100px;
     min-height: 85vh;
   }
 
   .hero-container {
-    padding-top: 40px;
+    padding-top: 20px;
   }
 
   .hero-title {
