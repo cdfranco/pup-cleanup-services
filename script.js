@@ -110,23 +110,37 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // Simulate form submission
+      // Submit to Netlify
       const submitButton = this.querySelector('button[type="submit"]');
       const originalText = submitButton.textContent;
 
       submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
 
-      // Simulate API call
-      setTimeout(() => {
+      // Submit the form to Netlify
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
         showNotification(
           "Thank you for your message! We'll get back to you soon.",
           'success'
         );
         this.reset();
+      })
+      .catch((error) => {
+        showNotification(
+          'Sorry, there was an error sending your message. Please try again.',
+          'error'
+        );
+        console.error('Form submission error:', error);
+      })
+      .finally(() => {
         submitButton.disabled = false;
         submitButton.textContent = originalText;
-      }, 2000);
+      });
     });
   }
 });
