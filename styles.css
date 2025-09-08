@@ -889,6 +889,19 @@ em {
   .testimonial-image img {
     max-width: 300px;
   }
+  
+  /* Map responsive styles */
+  .map-container {
+    margin-bottom: 2rem;
+  }
+  
+  .map-container h3 {
+    font-size: 1.3rem;
+  }
+  
+  .map-wrapper iframe {
+    height: 250px;
+  }
 }
 
 /* Thank You Page */
@@ -1304,6 +1317,30 @@ em {
 .contact {
   padding: 120px 0;
   background: var(--white);
+}
+
+/* Map Container */
+.map-container {
+  margin-bottom: 3rem;
+}
+
+.map-container h3 {
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.map-wrapper {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--carolina-blue-light);
+}
+
+.map-wrapper iframe {
+  display: block;
+  border-radius: var(--border-radius);
 }
 
 .contact-content {
