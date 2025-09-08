@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+      // Only prevent default if validation fails
 
       // Get form data
       const formData = new FormData(this);
@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Basic validation
       if (!firstName || !lastName || !phone || !email || !subject || !message) {
+        e.preventDefault();
         showNotification('Please fill in all required fields.', 'error');
         return;
       }
@@ -96,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
+        e.preventDefault();
         showNotification('Please enter a valid email address.', 'error');
         return;
       }
@@ -103,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Phone validation (basic)
       const phoneRegex = /^\(\d{3}\)\s\d{3}-\d{4}$/;
       if (!phoneRegex.test(phone)) {
+        e.preventDefault();
         showNotification(
           'Please enter a valid phone number in format (###) ###-####',
           'error'
@@ -110,37 +113,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // Submit to Netlify
-      const submitButton = this.querySelector('button[type="submit"]');
-      const originalText = submitButton.textContent;
-
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending...';
-
-      // Submit the form to Netlify
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(() => {
-        showNotification(
-          "Thank you for your message! We'll get back to you soon.",
-          'success'
-        );
-        this.reset();
-      })
-      .catch((error) => {
-        showNotification(
-          'Sorry, there was an error sending your message. Please try again.',
-          'error'
-        );
-        console.error('Form submission error:', error);
-      })
-      .finally(() => {
-        submitButton.disabled = false;
-        submitButton.textContent = originalText;
-      });
+      // Let Netlify handle the form submission natively
+      // Remove preventDefault to allow normal form submission
+      // e.preventDefault(); // Commented out to allow native submission
     });
   }
 });
