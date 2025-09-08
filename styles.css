@@ -837,7 +837,7 @@ em {
 
 .testimonial-image img {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   height: auto;
   border-radius: var(--border-radius);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
