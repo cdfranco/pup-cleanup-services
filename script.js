@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // Phone validation (basic)
-      const phoneRegex = /^\(\d{3}\)\s\d{3}-\d{4}$/;
+      // Phone validation (more flexible)
+      const phoneRegex = /^[\+]?[1]?[\s\-\.]?[\(]?[0-9]{3}[\)]?[\s\-\.]?[0-9]{3}[\s\-\.]?[0-9]{4}$/;
       if (!phoneRegex.test(phone)) {
         e.preventDefault();
         showNotification(
-          'Please enter a valid phone number in format (###) ###-####',
+          'Please enter a valid phone number',
           'error'
         );
         return;
