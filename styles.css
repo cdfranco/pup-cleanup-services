@@ -686,6 +686,23 @@ em {
   background: var(--white);
 }
 
+.hocl-description {
+  max-width: 800px;
+  margin: 2rem auto 3rem;
+  text-align: center;
+}
+
+.hocl-description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, rgba(153, 186, 221, 0.1), rgba(123, 163, 199, 0.05));
+  padding: 25px 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(153, 186, 221, 0.2);
+  margin: 0;
+}
+
 .hocl-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
