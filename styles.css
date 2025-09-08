@@ -910,7 +910,7 @@ em {
 .thank-you-section {
   padding: 0;
   background: var(--light-gray);
-  height: 90vh;
+  min-height: 70vh;
   margin-top: 10vh;
   display: flex;
   align-items: center;
@@ -965,6 +965,8 @@ em {
   color: var(--white);
   padding: 60px 0 20px;
   margin-top: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-content {
