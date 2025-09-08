@@ -908,9 +908,10 @@ em {
 
 /* Thank You Page */
 .thank-you-section {
-  padding: 120px 0;
+  padding: 0;
   background: var(--light-gray);
-  min-height: 80vh;
+  height: 90vh;
+  margin-top: 10vh;
   display: flex;
   align-items: center;
 }
