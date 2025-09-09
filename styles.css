@@ -843,11 +843,14 @@ em {
 }
 
 .testimonial-image img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: var(--border-radius);
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
 }
 
 .testimonial-text {
@@ -892,7 +895,13 @@ em {
   }
 
   .testimonial-image img {
-    max-width: 300px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
   }
 
   /* Map responsive styles */
