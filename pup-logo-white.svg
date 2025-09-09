@@ -1,0 +1,66 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-text { 
+        font-family: 'Fredoka One', cursive; 
+        font-size: 48px; 
+        font-weight: 400; 
+        fill: white; 
+        stroke: #333; 
+        stroke-width: 2;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+      .shovel { 
+        fill: white; 
+        stroke: #333; 
+        stroke-width: 2;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      }
+      .paw { 
+        fill: white; 
+        stroke: #333; 
+        stroke-width: 2;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      }
+    </style>
+  </defs>
+  
+  <!-- Background circle for contrast -->
+  <circle cx="200" cy="100" r="90" fill="#99badd" opacity="0.9"/>
+  
+  <!-- First P (Shovel) -->
+  <g transform="translate(50, 60)">
+    <!-- Shovel handle -->
+    <rect x="15" y="0" width="8" height="50" rx="4" class="shovel"/>
+    <!-- Shovel head -->
+    <ellipse cx="19" cy="55" rx="12" ry="8" class="shovel"/>
+    <rect x="7" y="50" width="24" height="6" rx="3" class="shovel"/>
+  </g>
+  
+  <!-- U with Paw -->
+  <g transform="translate(150, 60)">
+    <!-- U shape -->
+    <path d="M 10 0 L 10 40 Q 10 50 20 50 L 30 50 Q 40 50 40 40 L 40 0" class="shovel" fill="none"/>
+    <!-- Paw print inside U -->
+    <g transform="translate(25, 25)">
+      <!-- Paw pad -->
+      <ellipse cx="0" cy="0" rx="8" ry="6" class="paw"/>
+      <!-- Toe pads -->
+      <ellipse cx="-6" cy="-8" rx="3" ry="4" class="paw"/>
+      <ellipse cx="0" cy="-10" rx="3" ry="4" class="paw"/>
+      <ellipse cx="6" cy="-8" rx="3" ry="4" class="paw"/>
+    </g>
+  </g>
+  
+  <!-- Second P (Shovel) -->
+  <g transform="translate(250, 60)">
+    <!-- Shovel handle -->
+    <rect x="15" y="0" width="8" height="50" rx="4" class="shovel"/>
+    <!-- Shovel head -->
+    <ellipse cx="19" cy="55" rx="12" ry="8" class="shovel"/>
+    <rect x="7" y="50" width="24" height="6" rx="3" class="shovel"/>
+  </g>
+  
+  <!-- Text below -->
+  <text x="200" y="140" text-anchor="middle" class="logo-text" font-size="24">CLEAN UP SERVICES</text>
+</svg>
