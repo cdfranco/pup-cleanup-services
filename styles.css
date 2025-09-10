@@ -577,6 +577,98 @@ em {
   padding: 6px 14px;
 }
 
+/* Cleanup Process Section */
+.cleanup-process {
+  padding: 120px 0;
+  background: var(--light-gray);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 3rem;
+  justify-items: center;
+}
+
+.process-grid .process-card:nth-child(4),
+.process-grid .process-card:nth-child(5) {
+  grid-column: span 1;
+  justify-self: center;
+}
+
+.process-card {
+  background: var(--white);
+  padding: 50px 30px 40px 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid var(--medium-gray);
+  position: relative;
+  overflow: visible;
+}
+
+.process-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.process-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    135deg,
+    var(--carolina-blue),
+    var(--carolina-blue-dark)
+  );
+}
+
+.process-number {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: var(--carolina-blue);
+  font-weight: 800;
+  font-size: 2.75rem;
+  line-height: 1;
+  z-index: 10;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.process-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    135deg,
+    var(--carolina-blue),
+    var(--carolina-blue-light)
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.process-card h3 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.process-card p {
+  color: var(--text-light);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
 /* Services Section */
 .services {
   padding: 120px 0;
@@ -1594,6 +1686,28 @@ em {
 
   .benefits-grid {
     grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-items: stretch;
+  }
+
+  .process-grid .process-card:nth-child(4),
+  .process-grid .process-card:nth-child(5) {
+    grid-column: span 1;
+    justify-self: stretch;
+  }
+
+  .process-card {
+    padding: 40px 20px 30px 20px;
+  }
+
+  .process-number {
+    font-size: 2rem;
+    top: 15px;
+    left: 15px;
   }
 
   .hocl-grid {
