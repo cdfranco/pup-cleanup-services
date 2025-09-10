@@ -103,13 +103,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       // Phone validation (more flexible)
-      const phoneRegex = /^[\+]?[1]?[\s\-\.]?[\(]?[0-9]{3}[\)]?[\s\-\.]?[0-9]{3}[\s\-\.]?[0-9]{4}$/;
+      const phoneRegex =
+        /^[\+]?[1]?[\s\-\.]?[\(]?[0-9]{3}[\)]?[\s\-\.]?[0-9]{3}[\s\-\.]?[0-9]{4}$/;
       if (!phoneRegex.test(phone)) {
         e.preventDefault();
-        showNotification(
-          'Please enter a valid phone number',
-          'error'
-        );
+        showNotification('Please enter a valid phone number', 'error');
         return;
       }
 
@@ -404,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Logo click to home functionality
 document.addEventListener('DOMContentLoaded', function () {
   const logoLink = document.querySelector('.logo-link');
-  
+
   if (logoLink) {
     logoLink.addEventListener('click', function (e) {
       e.preventDefault();
@@ -419,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // HOCl button scroll functionality
 document.addEventListener('DOMContentLoaded', function () {
   const hoclButton = document.querySelector('.hocl-button');
-  
+
   if (hoclButton) {
     hoclButton.addEventListener('click', function (e) {
       e.preventDefault();
@@ -437,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('PUP Clean UP Services website loaded successfully!');
+  console.log('PUP Cleanup Services website loaded successfully!');
 
   // Add any additional initialization code here
   // For example, analytics initialization, third-party integrations, etc.

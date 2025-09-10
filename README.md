@@ -1,6 +1,6 @@
-# PUP Clean UP Services Landing Page
+# PUP Cleanup Services Landing Page
 
-A modern, responsive landing page for PUP Clean UP Services, inspired by the Fresh Yard website design. Built with clean HTML, CSS, and JavaScript.
+A modern, responsive landing page for PUP Cleanup Services, inspired by the Fresh Yard website design. Built with clean HTML, CSS, and JavaScript.
 
 ## Features
 
@@ -57,4 +57,4 @@ Replace the `logo.png` file with your company logo. The logo should be approxima
 
 ## License
 
-This project is created for PUP Clean UP Services. All rights reserved.
+This project is created for PUP Cleanup Services. All rights reserved.
