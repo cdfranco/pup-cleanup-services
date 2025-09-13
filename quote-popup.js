@@ -418,6 +418,9 @@ function submitQuoteForm() {
     }
   };
 
+  // Debug logging
+  console.log('Sending data to Airtable:', airtableRecord);
+
   // Show loading state
   const submitButton = form.querySelector('button[type="submit"]');
   const originalText = submitButton.textContent;
@@ -425,6 +428,7 @@ function submitQuoteForm() {
   submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
   // Submit to Airtable
+  // Note: Table name is case-sensitive and spaces are URL-encoded
   fetch('https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions', {
     method: 'POST',
     headers: {
@@ -434,8 +438,12 @@ function submitQuoteForm() {
     body: JSON.stringify(airtableRecord)
   })
     .then(response => {
+      console.log('Airtable response status:', response.status);
       if (!response.ok) {
-        throw new Error(`Airtable API error: ${response.status} ${response.statusText}`);
+        return response.text().then(text => {
+          console.error('Airtable error response:', text);
+          throw new Error(`Airtable API error: ${response.status} ${response.statusText} - ${text}`);
+        });
       }
       return response.json();
     })
