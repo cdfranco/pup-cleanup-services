@@ -425,9 +425,7 @@ function submitQuoteForm() {
   submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
   // Submit to Airtable
-  // TODO: Replace 'appYOUR_BASE_ID' with your actual Airtable base ID
-  // You can find this in your Airtable API documentation
-  fetch('https://api.airtable.com/v0/appYOUR_BASE_ID/Quote%20Submissions', {
+  fetch('https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions', {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer patjZFzfSWa76XC5A.302e476a7a237d9c5a74be60f6bd9828fd0f9f1c2ce510cb57cd713c94ec1d28',
