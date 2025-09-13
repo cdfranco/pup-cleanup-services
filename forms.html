@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms - PUP Cleanup Services</title>
+  </head>
+  <body>
+    <!-- This file helps Netlify detect forms during build time -->
+    <!-- The actual form is in client-onboarding.html -->
+
+    <!-- Client Onboarding Form -->
+    <form
+      name="client-onboarding"
+      method="POST"
+      action="/thank-you.html"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      data-netlify-recaptcha="true"
+      style="display: none"
+    >
+      <!-- Hidden honeypot field for spam protection -->
+      <div style="display: none">
+        <label
+          >Don't fill this out if you're human: <input name="bot-field"
+        /></label>
+      </div>
+
+      <!-- Hidden fields for form metadata -->
+      <input type="hidden" name="form-name" value="client-onboarding" />
+      <input type="hidden" name="submission-time" />
+      <input type="hidden" name="form-source" value="client-onboarding-page" />
+
+      <!-- Service Information Section -->
+      <div>
+        <h2>Service Information</h2>
+
+        <div>
+          <label for="serviceType">Service Type *</label>
+          <select name="serviceType" id="serviceType" required>
+            <option value="">Select Service Type</option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="propertySize">Property Size *</label>
+          <select name="propertySize" id="propertySize" required>
+            <option value="">Select Property Size</option>
+            <option value="small">Small (Under 0.25 acres)</option>
+            <option value="medium">Medium (0.25 - 0.5 acres)</option>
+            <option value="large">Large (0.5 - 1 acre)</option>
+            <option value="xlarge">Extra Large (Over 1 acre)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="numberOfDogs">Number Of Dogs *</label>
+          <input
+            type="range"
+            name="numberOfDogs"
+            id="numberOfDogs"
+            min="1"
+            max="5"
+            value="1"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="cleanupFrequency">Cleanup Frequency *</label>
+          <input
+            type="range"
+            name="cleanupFrequency"
+            id="cleanupFrequency"
+            min="0"
+            max="5"
+            value="1"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="specialRequests"
+            >Special Requests or Additional Information</label
+          >
+          <textarea
+            name="specialRequests"
+            id="specialRequests"
+            rows="4"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Dog Information Section -->
+      <div>
+        <h2>Dog Information</h2>
+
+        <div>
+          <label for="dog1Name">Dog #1 Name *</label>
+          <input type="text" name="dog1Name" id="dog1Name" required />
+        </div>
+
+        <div>
+          <label for="dog1Breed">Dog #1 Breed</label>
+          <input type="text" name="dog1Breed" id="dog1Breed" />
+        </div>
+
+        <div>
+          <label for="dog1Size">Dog #1 Size *</label>
+          <select name="dog1Size" id="dog1Size" required>
+            <option value="">Select Size</option>
+            <option value="small">Small (Under 25 lbs)</option>
+            <option value="medium">Medium (25-60 lbs)</option>
+            <option value="large">Large (60-100 lbs)</option>
+            <option value="xlarge">Extra Large (Over 100 lbs)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="dog1Age">Dog #1 Age</label>
+          <input type="text" name="dog1Age" id="dog1Age" />
+        </div>
+
+        <div>
+          <label for="dog1SpecialNeeds"
+            >Dog #1 Special Needs or Medical Conditions</label
+          >
+          <textarea
+            name="dog1SpecialNeeds"
+            id="dog1SpecialNeeds"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Contact Information Section -->
+      <div>
+        <h2>Contact Information</h2>
+
+        <div>
+          <label for="firstName">First Name *</label>
+          <input type="text" name="firstName" id="firstName" required />
+        </div>
+
+        <div>
+          <label for="lastName">Last Name *</label>
+          <input type="text" name="lastName" id="lastName" required />
+        </div>
+
+        <div>
+          <label for="email">Email Address *</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+
+        <div>
+          <label for="phone">Phone Number *</label>
+          <input type="tel" name="phone" id="phone" required />
+        </div>
+
+        <div>
+          <label for="address">Property Address *</label>
+          <input type="text" name="address" id="address" required />
+        </div>
+
+        <div>
+          <label for="city">City *</label>
+          <input type="text" name="city" id="city" required />
+        </div>
+
+        <div>
+          <label for="zipCode">ZIP Code *</label>
+          <input type="text" name="zipCode" id="zipCode" required />
+        </div>
+      </div>
+
+      <!-- Scheduling Preferences Section -->
+      <div>
+        <h2>Scheduling Preferences</h2>
+
+        <div>
+          <label for="preferredDay">Preferred Day of Week</label>
+          <select name="preferredDay" id="preferredDay">
+            <option value="">No Preference</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="preferredTime">Preferred Time of Day</label>
+          <select name="preferredTime" id="preferredTime">
+            <option value="">No Preference</option>
+            <option value="morning">Morning (8AM-12PM)</option>
+            <option value="afternoon">Afternoon (12PM-4PM)</option>
+            <option value="evening">Evening (4PM-6PM)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="startDate">Desired Start Date</label>
+          <input type="date" name="startDate" id="startDate" />
+        </div>
+
+        <div>
+          <label for="accessInstructions">Property Access Instructions</label>
+          <textarea
+            name="accessInstructions"
+            id="accessInstructions"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Terms and Conditions Section -->
+      <div>
+        <h2>Terms and Conditions</h2>
+
+        <div>
+          <label>
+            <input type="checkbox" name="termsAccepted" required />
+            I agree to the <a href="#" id="termsLink">Terms of Service</a> and
+            <a href="#" id="privacyLink">Privacy Policy</a> *
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <input type="checkbox" name="marketingConsent" />
+            I would like to receive updates and promotional offers via email
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <input type="checkbox" name="textConsent" />
+            I consent to receive text messages about my service appointments
+          </label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button type="submit" class="submit-button">Submit Request</button>
+      </div>
+    </form>
+  </body>
+</html>

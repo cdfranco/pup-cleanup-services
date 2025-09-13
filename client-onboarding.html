@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Onboarding - PUP Cleanup Services</title>
+
+    <!-- Additional meta tags for better social sharing -->
+    <meta
+      name="description"
+      content="Get started with PUP Cleanup Services. Professional pet waste removal and eco-friendly sanitizing services in Athens, GA."
+    />
+    <meta
+      name="keywords"
+      content="pet waste removal, dog poop cleanup, Athens GA, professional cleaning, hypochlorous acid, eco-friendly, client onboarding"
+    />
+    <meta name="author" content="PUP Cleanup Services" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="3x/UpdatedPUPLogo.png" />
+    <link rel="apple-touch-icon" href="3x/UpdatedPUPLogo.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://pupcleanupservices.com/client-onboarding.html"
+    />
+    <meta
+      property="og:title"
+      content="Client Onboarding - PUP Cleanup Services"
+    />
+    <meta
+      property="og:description"
+      content="Get started with PUP Cleanup Services. Professional pet waste removal and eco-friendly sanitizing services in Athens, GA."
+    />
+    <meta
+      property="og:image"
+      content="https://pupcleanupservices.com/3x/UpdatedPUPLogo.png"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Fredoka+One:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body style="display: flex; flex-direction: column; min-height: 100vh">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-menu" id="nav-menu">
+          <a href="index.html#residential" class="nav-link">Residential</a>
+          <a href="index.html#contact" class="nav-link">Commercial</a>
+          <a href="index.html#faq" class="nav-link">FAQ</a>
+          <a href="index.html#about" class="nav-link">About</a>
+        </div>
+        <div class="nav-logo">
+          <a href="index.html" class="logo-link">
+            <img
+              src="3x/UpdatedPUPLogo.png"
+              alt="PUP Cleanup Services"
+              class="logo"
+            />
+          </a>
+        </div>
+        <div class="nav-cta">
+          <div class="nav-social">
+            <a
+              href="#"
+              class="nav-social-link"
+              aria-label="Follow us on Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="#"
+              class="nav-social-link"
+              aria-label="Follow us on Facebook"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+          <a href="index.html#contact" class="cta-button primary"
+            >Get a Quote</a
+          >
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="onboarding-hero">
+      <div class="container">
+        <div class="onboarding-header">
+          <h1 class="onboarding-title">Client Onboarding</h1>
+          <p class="onboarding-subtitle">
+            Let's get you started with PUP Cleanup Services
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Onboarding Form -->
+    <section class="onboarding-form-section">
+      <div class="container">
+        <div class="onboarding-form-container">
+          <form
+            class="onboarding-form"
+            id="onboardingForm"
+            name="client-onboarding"
+            method="POST"
+            action="/thank-you.html"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            data-netlify-recaptcha="true"
+          >
+            <!-- Hidden honeypot field for spam protection -->
+            <div style="display: none">
+              <label
+                >Don't fill this out if you're human: <input name="bot-field"
+              /></label>
+            </div>
+
+            <!-- Hidden fields for form metadata -->
+            <input type="hidden" name="form-name" value="client-onboarding" />
+            <input type="hidden" name="submission-time" id="submission-time" />
+            <input
+              type="hidden"
+              name="form-source"
+              value="client-onboarding-page"
+            />
+
+            <!-- Service Information Section -->
+            <div class="form-section">
+              <h2 class="form-section-title">Service Information</h2>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="zipCode">Zip Code *</label>
+                  <input
+                    type="text"
+                    id="zipCode"
+                    name="zipCode"
+                    placeholder="30605"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="couponCode">Coupon Code</label>
+                  <input
+                    type="text"
+                    id="couponCode"
+                    name="couponCode"
+                    placeholder="Enter code if you have one"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="numberOfDogs">Number Of Dogs *</label>
+                  <div class="slider-container">
+                    <div class="slider-wrapper">
+                      <input
+                        type="range"
+                        id="numberOfDogs"
+                        name="numberOfDogs"
+                        min="1"
+                        max="5"
+                        value="1"
+                        class="slider"
+                        required
+                      />
+                      <div class="slider-labels">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                      </div>
+                    </div>
+                    <div class="slider-value">
+                      <span id="numberOfDogsValue">1 Dog</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="cleanupFrequency">Cleanup Frequency *</label>
+                  <div class="slider-container">
+                    <div class="slider-wrapper">
+                      <input
+                        type="range"
+                        id="cleanupFrequency"
+                        name="cleanupFrequency"
+                        min="0"
+                        max="5"
+                        value="1"
+                        class="slider"
+                        required
+                      />
+                      <div class="slider-labels">
+                        <span>Two Times A Week</span>
+                        <span>Once A Week</span>
+                        <span>Bi Weekly</span>
+                        <span>Twice Per Month</span>
+                        <span>Once A Month</span>
+                        <span>One Time</span>
+                      </div>
+                    </div>
+                    <div class="slider-value">
+                      <span id="cleanupFrequencyValue">Once A Week</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="lastCleanup"
+                  >Last Time Yard Was Thoroughly Cleaned *</label
+                >
+                <select id="lastCleanup" name="lastCleanup" required>
+                  <option value="">Select timeframe</option>
+                  <option value="one-week">One Week</option>
+                  <option value="two-weeks">Two Weeks</option>
+                  <option value="three-weeks">Three Weeks</option>
+                  <option value="one-month">One Month</option>
+                  <option value="two-months">Two Months</option>
+                  <option value="3-4-months">3-4 Months</option>
+                  <option value="5-6-months">5-6 Months</option>
+                  <option value="7-9-months">7-9 Months</option>
+                  <option value="10-plus-months">10+ Months</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Pricing Display -->
+            <div class="pricing-display">
+              <div class="pricing-card">
+                <h3>Our Best Rate!</h3>
+                <p>You and Your pet will love our service.</p>
+                <p class="pricing-note">
+                  We will give you an exact quote when we see the yard.
+                </p>
+                <p class="pricing-disclaimer">
+                  Price does not include any applicable sales tax.
+                </p>
+              </div>
+            </div>
+
+            <!-- Personal Information Section -->
+            <div class="form-section">
+              <h2 class="form-section-title">Sign Up</h2>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="First Name"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Last Name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Your Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="homePhone">Home Phone Number</label>
+                  <input
+                    type="tel"
+                    id="homePhone"
+                    name="homePhone"
+                    placeholder="(###) ###-####"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cellPhone">Cell Phone Number *</label>
+                <input
+                  type="tel"
+                  id="cellPhone"
+                  name="cellPhone"
+                  placeholder="(###) ###-####"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="homeAddress">Home Address *</label>
+                <input
+                  type="text"
+                  id="homeAddress"
+                  name="homeAddress"
+                  placeholder="Street Address"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City *</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="City"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="state">State *</label>
+                  <select id="state" name="state" required>
+                    <option value="">Select State</option>
+                    <option value="AL">Alabama - AL</option>
+                    <option value="AK">Alaska - AK</option>
+                    <option value="AZ">Arizona - AZ</option>
+                    <option value="AR">Arkansas - AR</option>
+                    <option value="CA">California - CA</option>
+                    <option value="CO">Colorado - CO</option>
+                    <option value="CT">Connecticut - CT</option>
+                    <option value="DE">Delaware - DE</option>
+                    <option value="DC">District of Columbia - DC</option>
+                    <option value="FL">Florida - FL</option>
+                    <option value="GA" selected>Georgia - GA</option>
+                    <option value="HI">Hawaii - HI</option>
+                    <option value="ID">Idaho - ID</option>
+                    <option value="IL">Illinois - IL</option>
+                    <option value="IN">Indiana - IN</option>
+                    <option value="IA">Iowa - IA</option>
+                    <option value="KS">Kansas - KS</option>
+                    <option value="KY">Kentucky - KY</option>
+                    <option value="LA">Louisiana - LA</option>
+                    <option value="ME">Maine - ME</option>
+                    <option value="MD">Maryland - MD</option>
+                    <option value="MA">Massachusetts - MA</option>
+                    <option value="MI">Michigan - MI</option>
+                    <option value="MN">Minnesota - MN</option>
+                    <option value="MS">Mississippi - MS</option>
+                    <option value="MO">Missouri - MO</option>
+                    <option value="MT">Montana - MT</option>
+                    <option value="NE">Nebraska - NE</option>
+                    <option value="NV">Nevada - NV</option>
+                    <option value="NH">New Hampshire - NH</option>
+                    <option value="NJ">New Jersey - NJ</option>
+                    <option value="NM">New Mexico - NM</option>
+                    <option value="NY">New York - NY</option>
+                    <option value="NC">North Carolina - NC</option>
+                    <option value="ND">North Dakota - ND</option>
+                    <option value="OH">Ohio - OH</option>
+                    <option value="OK">Oklahoma - OK</option>
+                    <option value="OR">Oregon - OR</option>
+                    <option value="PA">Pennsylvania - PA</option>
+                    <option value="RI">Rhode Island - RI</option>
+                    <option value="SC">South Carolina - SC</option>
+                    <option value="SD">South Dakota - SD</option>
+                    <option value="TN">Tennessee - TN</option>
+                    <option value="TX">Texas - TX</option>
+                    <option value="UT">Utah - UT</option>
+                    <option value="VT">Vermont - VT</option>
+                    <option value="VA">Virginia - VA</option>
+                    <option value="WA">Washington - WA</option>
+                    <option value="WV">West Virginia - WV</option>
+                    <option value="WI">Wisconsin - WI</option>
+                    <option value="WY">Wyoming - WY</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="consent-checkbox">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="marketingConsent" />
+                  <span class="checkmark"></span>
+                  By providing information above, you consent to receive
+                  marketing messages from us.
+                </label>
+              </div>
+            </div>
+
+            <!-- Dog Information Section -->
+            <div class="form-section" id="dogInfoSection">
+              <h2 class="form-section-title">Dog Information</h2>
+              <div id="dogFormsContainer">
+                <!-- Default dog form - will be replaced by JavaScript -->
+                <div class="dog-form">
+                  <h3>Dog #1</h3>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="dogName1">Dog's name</label>
+                      <input
+                        type="text"
+                        id="dogName1"
+                        name="dogName1"
+                        placeholder="Dog's name"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="dogBreed1">Dog's breed</label>
+                      <input
+                        type="text"
+                        id="dogBreed1"
+                        name="dogBreed1"
+                        placeholder="Dog's breed"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label
+                      >Is it safe for us to be in the yard with your dog?
+                      *</label
+                    >
+                    <div class="radio-group">
+                      <label class="radio-label">
+                        <input
+                          type="radio"
+                          name="dogSafe1"
+                          value="yes"
+                          required
+                        />
+                        <span class="radio-mark"></span>
+                        Yes
+                      </label>
+                      <label class="radio-label">
+                        <input
+                          type="radio"
+                          name="dogSafe1"
+                          value="no"
+                          required
+                        />
+                        <span class="radio-mark"></span>
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="dogComments1">Additional comment for dog</label>
+                    <textarea
+                      id="dogComments1"
+                      name="dogComments1"
+                      placeholder="Any additional information about this dog..."
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Property Information Section -->
+            <div class="form-section">
+              <h2 class="form-section-title">Property Information</h2>
+
+              <div class="form-group">
+                <label for="gateLocation">Where is your gate located? *</label>
+                <select id="gateLocation" name="gateLocation" required>
+                  <option value="">Select gate location</option>
+                  <option value="left">Left</option>
+                  <option value="right">Right</option>
+                  <option value="alley">Alley</option>
+                  <option value="no-gate">No Gate</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="gatedCommunity">Gated community</label>
+                <input
+                  type="text"
+                  id="gatedCommunity"
+                  name="gatedCommunity"
+                  placeholder="Please insert the code if any"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Which areas should we clean? *</label>
+                <div class="checkbox-grid">
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="front-yard"
+                    />
+                    <span class="checkmark"></span>
+                    Front Yard
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="back-yard"
+                    />
+                    <span class="checkmark"></span>
+                    Back Yard
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="flower-beds"
+                    />
+                    <span class="checkmark"></span>
+                    Flower Beds
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="reasonable-radius"
+                    />
+                    <span class="checkmark"></span>
+                    Reasonable Radius
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="deck-patio"
+                    />
+                    <span class="checkmark"></span>
+                    Deck/Patio
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="behind-shed"
+                    />
+                    <span class="checkmark"></span>
+                    Behind Shed
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="dog-run"
+                    />
+                    <span class="checkmark"></span>
+                    Dog Run
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="cleanupAreas" value="garden" />
+                    <span class="checkmark"></span>
+                    Garden
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="kids-play-area"
+                    />
+                    <span class="checkmark"></span>
+                    Kids Play Area
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="side-yard-left"
+                    />
+                    <span class="checkmark"></span>
+                    Side Yard (Left)
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="side-yard-right"
+                    />
+                    <span class="checkmark"></span>
+                    Side Yard (Right)
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="cleanupAreas" value="kennel" />
+                    <span class="checkmark"></span>
+                    Kennel
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="area-with-mulch"
+                    />
+                    <span class="checkmark"></span>
+                    Area With Mulch
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="area-with-rocks"
+                    />
+                    <span class="checkmark"></span>
+                    Area With Rocks
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="pool-area"
+                    />
+                    <span class="checkmark"></span>
+                    Pool Area
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="driveway"
+                    />
+                    <span class="checkmark"></span>
+                    Driveway
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="under-deck"
+                    />
+                    <span class="checkmark"></span>
+                    Under Deck
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="cleanupAreas"
+                      value="area-with-pine-straw"
+                    />
+                    <span class="checkmark"></span>
+                    Area With Pine Straw
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="cleanupAreas" value="all" />
+                    <span class="checkmark"></span>
+                    All
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notification Preferences Section -->
+            <div class="form-section">
+              <h2 class="form-section-title">Notification Preferences</h2>
+
+              <div class="form-group">
+                <label>Cleanup Notifications</label>
+                <div class="checkbox-group">
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="notifications"
+                      value="off-schedule"
+                    />
+                    <span class="checkmark"></span>
+                    Off Schedule
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="notifications"
+                      value="on-the-way"
+                    />
+                    <span class="checkmark"></span>
+                    On The Way
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="notifications"
+                      value="completed"
+                    />
+                    <span class="checkmark"></span>
+                    Completed
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="notificationMessage"
+                  >What cleanup message would you like to receive?</label
+                >
+                <textarea
+                  id="notificationMessage"
+                  name="notificationMessage"
+                  placeholder="Any specific message preferences..."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >How would you like to receive cleanup notifications?</label
+                >
+                <div class="checkbox-group">
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="notificationType"
+                      value="email"
+                    />
+                    <span class="checkmark"></span>
+                    Email
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="notificationType"
+                      value="sms"
+                    />
+                    <span class="checkmark"></span>
+                    SMS
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="notificationType"
+                      value="call"
+                    />
+                    <span class="checkmark"></span>
+                    Call
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Referral Information Section -->
+            <div class="form-section">
+              <h2 class="form-section-title">How Did You Hear About Us?</h2>
+
+              <div class="form-group">
+                <label for="referralSource"
+                  >Please tell us how you heard about us *</label
+                >
+                <select id="referralSource" name="referralSource" required>
+                  <option value="">Select referral source</option>
+                  <option value="search-engine">Search Engine</option>
+                  <option value="previous-client">Previous Client</option>
+                  <option value="family-friend">
+                    Referred By Family Or Friend
+                  </option>
+                  <option value="flier">Flier From Business</option>
+                  <option value="directory">Directory Listing</option>
+                  <option value="social-media">Social Media</option>
+                  <option value="vehicle-signage">Vehicle Signage</option>
+                  <option value="radio-ad">Radio Ad</option>
+                  <option value="local-event">Local Event</option>
+                  <option value="gift-certificate">Gift Certificate</option>
+                  <option value="tv-ad">TV Ad</option>
+                  <option value="sales-representative">
+                    Sales Representative
+                  </option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="additionalComments">Additional comments</label>
+                <textarea
+                  id="additionalComments"
+                  name="additionalComments"
+                  placeholder="Any additional information you'd like to share..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Terms and Submit Section -->
+            <div class="form-section">
+              <div class="terms-section">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="privacyPolicy" required />
+                  <span class="checkmark"></span>
+                  By checking this box I agree to our
+                  <a href="#" class="terms-link">Privacy Policy</a>.
+                </label>
+
+                <label class="checkbox-label">
+                  <input type="checkbox" name="termsOfService" required />
+                  <span class="checkmark"></span>
+                  I agree to
+                  <a href="#" class="terms-link">terms of service</a>. *
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="cta-button primary large submit-button"
+              >
+                Get Free Quote
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal" id="termsModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Terms of Service</h3>
+          <span class="close" id="closeTerms">&times;</span>
+        </div>
+        <div class="modal-body">
+          <p>
+            As the client, you are responsible for maintaining safe access into
+            and out of the yard (if we are unable to clean due to access, you
+            will be charged for that cleanup), immediate notification of any
+            changes in the number of pets and prompt payment of balances due.
+          </p>
+
+          <p>
+            Inclement weather may make it hazardous or impossible to make a
+            scheduled cleanup. In this event, we will be responsible for
+            servicing your yard as soon as possible.
+          </p>
+
+          <p>
+            If for any reason your pet(s) will not be using the yard for a
+            certain period (i.e. vacation, illness, etc.) and you do not wish to
+            be charged for an unnecessary visit(s), please let us know in
+            advance to pause the service.
+          </p>
+
+          <p>
+            We assume no liabilities for damages to yards, gates, pets or other
+            properties.
+          </p>
+
+          <p>
+            Fees and Promotions are subject to change at any time. In this rare
+            circumstance, you will be notified at least two (2) weeks prior to
+            any changes.
+          </p>
+
+          <p>
+            Either party may terminate service (in writing) at any time. Unpaid
+            balances are due within 15 days.
+          </p>
+
+          <p>
+            By initiating service, both parties agree to the above terms and
+            responsibilities.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slogan Banner -->
+    <div class="slogan-banner">
+      <img
+        src="3x/Slogan pic@3x.png"
+        alt="PUP Cleanup Services Slogan"
+        class="slogan-image"
+      />
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section footer-brand">
+            <div class="footer-logo">
+              <img
+                src="3x/UpdatedPUPLogo.png"
+                alt="PUP Cleanup Services"
+                class="footer-logo-img"
+              />
+            </div>
+            <p class="footer-description">
+              Professional pet waste removal and sanitizing services for Athens,
+              GA and surrounding areas. Family-owned business providing safe,
+              effective, and eco-friendly solutions.
+            </p>
+            <div class="footer-social">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-facebook"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="index.html#residential">Residential Cleanup</a></li>
+              <li><a href="index.html#commercial">Commercial Services</a></li>
+              <li><a href="index.html#hocl">Hypochlorous Acid Treatment</a></li>
+              <li><a href="index.html#schedule">Scheduling & Pricing</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Service Areas</h3>
+            <ul class="footer-links">
+              <li>Athens, GA</li>
+              <li>Watkinsville, GA</li>
+              <li>Bogart, GA</li>
+              <li>Winterville, GA</li>
+              <li>Hull, GA</li>
+              <li>Arnoldsville, GA</li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Info</h3>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>pupcleanupservices@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>323-371-7171</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-6PM<br />Sat: 9AM-4PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2025 PUP Cleanup Services. All rights reserved.</p>
+            <div class="footer-bottom-links">
+              <a href="index.html#faq">FAQ</a>
+              <a href="index.html#about">About</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="onboarding-script.js"></script>
+  </body>
+</html>
