@@ -475,7 +475,7 @@ em {
 
 .hero-title {
   font-family: 'Fredoka One', 'Nunito', sans-serif;
-  font-size: 5.5rem;
+  font-size: 7rem;
   margin-bottom: 2.5rem;
   color: var(--white);
   text-shadow: none;
@@ -1805,7 +1805,7 @@ em {
   }
 
   .hero-title {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
   }
 
   .hero-subtitle .subtitle-line {
@@ -1969,7 +1969,7 @@ em {
   }
 
   .hero-title {
-    font-size: 3.2rem;
+    font-size: 4rem;
   }
 
   .hero-subtitle .subtitle-line {
