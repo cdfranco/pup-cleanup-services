@@ -2022,7 +2022,7 @@ em {
 
   .hero .cta-button {
     padding: 15px 30px;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
 
   .section-title {
@@ -2031,12 +2031,12 @@ em {
 
   .cta-button {
     padding: 12px 25px;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .cta-button.large {
     padding: 15px 30px;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
 
   .service-card {
