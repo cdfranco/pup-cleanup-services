@@ -2581,6 +2581,13 @@ html {
   );
 }
 
+/* Hide section navigation on mobile and tablet */
+@media (max-width: 1024px) {
+  .section-navigation {
+    display: none !important;
+  }
+}
+
 /* Responsive Design for Onboarding */
 @media (max-width: 768px) {
   .onboarding-title {
