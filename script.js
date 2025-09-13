@@ -405,11 +405,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (logoLink) {
     logoLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+      // Check if we're on the home page (index.html)
+      if (
+        window.location.pathname.endsWith('index.html') ||
+        window.location.pathname === '/' ||
+        window.location.pathname === ''
+      ) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }
+      // If on other pages, let the href="index.html" handle navigation
     });
   }
 });
