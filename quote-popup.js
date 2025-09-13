@@ -363,11 +363,18 @@ function submitQuoteForm() {
   const data = Object.fromEntries(formData.entries());
 
   // Get cleanup areas as array
-  const cleanupAreas = Array.from(document.querySelectorAll('input[name="cleanupAreas"]:checked'))
-    .map(checkbox => checkbox.value);
+  const cleanupAreas = Array.from(
+    document.querySelectorAll('input[name="cleanupAreas"]:checked')
+  ).map((checkbox) => checkbox.value);
 
   // Get frequency label
-  const frequencyLabels = ['1x Week', '2x Week', 'Bi-Weekly', '1x Month', 'One Time'];
+  const frequencyLabels = [
+    '1x Week',
+    '2x Week',
+    'Bi-Weekly',
+    '1x Month',
+    'One Time',
+  ];
   const frequencyLabel = frequencyLabels[parseInt(data.cleanupFrequency) || 0];
 
   // Get number of dogs label
@@ -382,7 +389,7 @@ function submitQuoteForm() {
     2: { 0: 30, 1: 54, 2: 35, 3: 60, 4: 70 },
     3: { 0: 35, 1: 63, 2: 40, 3: 70, 4: 80 },
     4: { 0: 40, 1: 72, 2: 45, 3: 80, 4: 90 },
-    5: { 0: 45, 1: 81, 2: 50, 3: 90, 4: 100 }
+    5: { 0: 45, 1: 81, 2: 50, 3: 90, 4: 100 },
   };
   const basePrice = pricingMatrix[numberOfDogs]?.[cleanupFrequency] || 25;
   let areaMultiplier = 1.0;
@@ -401,11 +408,11 @@ function submitQuoteForm() {
     fields: {
       'First Name': data.firstName || '',
       'Last Name': data.lastName || '',
-      'Email': data.email || '',
-      'Phone': data.cellPhone || '',
-      'Address': data.address || '',
-      'City': data.city || '',
-      'State': data.state || '',
+      Email: data.email || '',
+      Phone: data.cellPhone || '',
+      Address: data.address || '',
+      City: data.city || '',
+      State: data.state || '',
       'Zip Code': data.zipCode || '',
       'Number of Dogs': dogLabel,
       'Cleanup Frequency': frequencyLabel,
@@ -414,47 +421,61 @@ function submitQuoteForm() {
       'Property Size': data.propertySize || '',
       'Special Instructions': data.specialInstructions || '',
       'Submission Time': new Date().toISOString(),
-      'Form Source': 'Quote Popup'
-    }
+      'Form Source': 'Quote Popup',
+    },
   };
 
   // Debug logging
   console.log('Sending data to Airtable:', airtableRecord);
   console.log('Airtable URL:', airtableUrl);
-  console.log('Airtable Token (first 10 chars):', airtableToken.substring(0, 10) + '...');
+  console.log(
+    'Airtable Token (first 10 chars):',
+    airtableToken.substring(0, 10) + '...'
+  );
 
   // Show loading state
   const submitButton = form.querySelector('button[type="submit"]');
   const originalText = submitButton.textContent;
   submitButton.disabled = true;
-  submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+  submitButton.innerHTML =
+    '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
   // Submit to Airtable
   // Note: Table name is case-sensitive and spaces are URL-encoded
   // SECURITY: API key is loaded from configuration file
-  const airtableToken = window.APP_CONFIG?.AIRTABLE_TOKEN || 'YOUR_NEW_TOKEN_HERE';
-  const airtableUrl = window.APP_CONFIG?.AIRTABLE_API_URL || 'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
-  
+  const airtableToken =
+    window.APP_CONFIG?.AIRTABLE_TOKEN || 'YOUR_NEW_TOKEN_HERE';
+  const airtableUrl =
+    window.APP_CONFIG?.AIRTABLE_API_URL ||
+    'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
+
   if (airtableToken === 'YOUR_NEW_TOKEN_HERE') {
-    console.error('Airtable token not configured. Please update config.js with your token.');
-    showQuoteNotification('Configuration error. Please contact support.', 'error');
+    console.error(
+      'Airtable token not configured. Please update config.js with your token.'
+    );
+    showQuoteNotification(
+      'Configuration error. Please contact support.',
+      'error'
+    );
     return;
   }
-  
+
   fetch(airtableUrl, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${airtableToken}`,
-      'Content-Type': 'application/json'
+      Authorization: `Bearer ${airtableToken}`,
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(airtableRecord)
+    body: JSON.stringify(airtableRecord),
   })
-    .then(response => {
+    .then((response) => {
       console.log('Airtable response status:', response.status);
       if (!response.ok) {
-        return response.text().then(text => {
+        return response.text().then((text) => {
           console.error('Airtable error response:', text);
-          throw new Error(`Airtable API error: ${response.status} ${response.statusText} - ${text}`);
+          throw new Error(
+            `Airtable API error: ${response.status} ${response.statusText} - ${text}`
+          );
         });
       }
       return response.json();
@@ -515,41 +536,46 @@ function calculatePrice() {
 
   // Exact pricing matrix from the spreadsheet
   const pricingMatrix = {
-    1: { // 1 dog
+    1: {
+      // 1 dog
       0: 25, // 1x Week
-      1: 45, // 2x Week  
+      1: 45, // 2x Week
       2: 30, // Bi Weekly
       3: 50, // 1x Month
-      4: 60  // One Time
+      4: 60, // One Time
     },
-    2: { // 2 dogs
+    2: {
+      // 2 dogs
       0: 30, // 1x Week
       1: 54, // 2x Week
       2: 35, // Bi Weekly
       3: 60, // 1x Month
-      4: 70  // One Time
+      4: 70, // One Time
     },
-    3: { // 3 dogs
+    3: {
+      // 3 dogs
       0: 35, // 1x Week
       1: 63, // 2x Week
       2: 40, // Bi Weekly
       3: 70, // 1x Month
-      4: 80  // One Time
+      4: 80, // One Time
     },
-    4: { // 4 dogs
+    4: {
+      // 4 dogs
       0: 40, // 1x Week
       1: 72, // 2x Week
       2: 45, // Bi Weekly
       3: 80, // 1x Month
-      4: 90  // One Time
+      4: 90, // One Time
     },
-    5: { // 5 dogs (extrapolated)
+    5: {
+      // 5 dogs (extrapolated)
       0: 45, // 1x Week
       1: 81, // 2x Week
       2: 50, // Bi Weekly
       3: 90, // 1x Month
-      4: 100 // One Time
-    }
+      4: 100, // One Time
+    },
   };
 
   // Get base price from matrix
@@ -560,7 +586,7 @@ function calculatePrice() {
     numberOfDogs,
     cleanupFrequency,
     basePrice,
-    cleanupAreas: cleanupAreas.length
+    cleanupAreas: cleanupAreas.length,
   });
 
   // Area multipliers (small adjustments for additional areas)
