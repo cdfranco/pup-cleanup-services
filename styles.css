@@ -365,11 +365,20 @@ em {
   border: 6px solid rgba(255, 255, 255, 0.9);
   animation: gentleFloat 4s ease-in-out infinite;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .hero-image:hover {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-image-buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
 }
 
 @keyframes gentleFloat {
@@ -1731,6 +1740,11 @@ em {
     display: none;
   }
 
+  /* Hide hero image buttons on mobile */
+  .hero-image-buttons {
+    display: none;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -1870,6 +1884,11 @@ em {
     display: none;
   }
 
+  /* Hide hero image buttons on small mobile too */
+  .hero-image-buttons {
+    display: none;
+  }
+
   .feature-text {
     font-size: 1.1rem;
   }
@@ -1967,10 +1986,11 @@ html {
 }
 
 .onboarding-title {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
+  margin-top: 10%;
   margin-bottom: 1rem;
   color: var(--white);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
 }
 
 .onboarding-subtitle {
@@ -2564,7 +2584,7 @@ html {
 /* Responsive Design for Onboarding */
 @media (max-width: 768px) {
   .onboarding-title {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
   }
 
   .onboarding-subtitle {
@@ -2600,7 +2620,7 @@ html {
   }
 
   .onboarding-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .onboarding-form {
