@@ -1022,6 +1022,17 @@ em {
     object-fit: cover;
   }
 
+  /* Optimize future section background for mobile */
+  .future {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
+
   .testimonial-content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -2619,6 +2630,17 @@ html {
     max-width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /* Optimize future section background for tablet */
+  .future {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
   }
 }
 
