@@ -434,40 +434,68 @@ function calculatePrice() {
     'input[name="cleanupAreas"]:checked'
   );
 
-  // Base pricing structure
-  const basePrice = 25; // Base price for 1 dog, 1x week, basic areas
-  const dogMultiplier = 1 + (numberOfDogs - 1) * 0.3; // 30% increase per additional dog
+  // Exact pricing matrix from the spreadsheet
+  const pricingMatrix = {
+    1: { // 1 dog
+      0: 45, // 2x Week
+      1: 25, // 1x Week  
+      2: 30, // Bi Weekly
+      3: 50, // 1x Month
+      4: 60  // One Time
+    },
+    2: { // 2 dogs
+      0: 54, // 2x Week
+      1: 30, // 1x Week
+      2: 35, // Bi Weekly
+      3: 60, // 1x Month
+      4: 70  // One Time
+    },
+    3: { // 3 dogs
+      0: 63, // 2x Week
+      1: 35, // 1x Week
+      2: 40, // Bi Weekly
+      3: 70, // 1x Month
+      4: 80  // One Time
+    },
+    4: { // 4 dogs
+      0: 72, // 2x Week
+      1: 40, // 1x Week
+      2: 45, // Bi Weekly
+      3: 80, // 1x Month
+      4: 90  // One Time
+    },
+    5: { // 5 dogs (extrapolated)
+      0: 81, // 2x Week
+      1: 45, // 1x Week
+      2: 50, // Bi Weekly
+      3: 90, // 1x Month
+      4: 100 // One Time
+    }
+  };
 
-  // Frequency multipliers
-  const frequencyMultipliers = [1.0, 2.0, 0.6, 0.3, 0.2]; // 1x/week, 2x/week, bi-weekly, 1x/month, one-time
-  const frequencyMultiplier = frequencyMultipliers[cleanupFrequency] || 1.0;
+  // Get base price from matrix
+  const basePrice = pricingMatrix[numberOfDogs]?.[cleanupFrequency] || 25;
 
-  // Area multipliers
+  // Area multipliers (small adjustments for additional areas)
   let areaMultiplier = 1.0;
   if (cleanupAreas.length > 0) {
     const hasAllAreas = Array.from(cleanupAreas).some(
       (area) => area.value === 'all'
     );
     if (hasAllAreas) {
-      areaMultiplier = 1.5;
-    } else {
-      areaMultiplier = 1 + (cleanupAreas.length - 1) * 0.2; // 20% increase per additional area
+      areaMultiplier = 1.2; // 20% increase for all areas
+    } else if (cleanupAreas.length > 2) {
+      areaMultiplier = 1.1; // 10% increase for 3+ specific areas
     }
   }
 
   // Calculate final price
-  const calculatedPrice = Math.round(
-    basePrice * dogMultiplier * frequencyMultiplier * areaMultiplier
-  );
+  const calculatedPrice = Math.round(basePrice * areaMultiplier);
 
-  // Add some variance for realistic pricing
-  const minPrice = Math.max(15, calculatedPrice - 5);
-  const maxPrice = calculatedPrice + 10;
-
-  // Update price display
+  // Display exact price (no range needed with exact pricing)
   const priceElement = document.getElementById('quotePriceAmount');
   if (priceElement) {
-    priceElement.textContent = `$${minPrice} - $${maxPrice}`;
+    priceElement.textContent = `$${calculatedPrice}`;
   }
 }
 
