@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   initializeQuoteForm();
   initializePriceCalculation();
   initializeScrollTrigger();
+  
+  console.log('All quote popup functions initialized');
 });
 
 // Initialize quote popup functionality
@@ -66,16 +68,36 @@ function closeQuotePopup() {
 // Initialize quote form functionality
 function initializeQuoteForm() {
   const form = document.getElementById('quotePopupForm');
-  if (!form) return;
+  if (!form) {
+    console.error('Quote form not found!');
+    return;
+  }
+
+  console.log('Quote form found, setting up event listeners...');
 
   // Form submission handler
   form.addEventListener('submit', function (e) {
+    console.log('Form submit event triggered!');
     e.preventDefault();
 
     if (validateQuoteForm()) {
+      console.log('Form validation passed, submitting...');
       submitQuoteForm();
+    } else {
+      console.log('Form validation failed');
     }
   });
+
+  // Also add click handler to submit button as backup
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (submitButton) {
+    submitButton.addEventListener('click', function(e) {
+      console.log('Submit button clicked!');
+      // Let the form submit event handle it
+    });
+  } else {
+    console.error('Submit button not found!');
+  }
 
   // Initialize sliders
   initializeQuoteSliders();
