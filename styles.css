@@ -480,8 +480,13 @@ em {
   color: var(--white);
   text-shadow: none;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 0.9;
   letter-spacing: 1px;
+}
+
+.hero-title br {
+  display: block;
+  margin: 0.2em 0;
 }
 
 .hero-subtitle {
@@ -1806,6 +1811,12 @@ em {
 
   .hero-title {
     font-size: 4.5rem;
+    line-height: 0.9;
+  }
+  
+  .hero-title br {
+    display: block;
+    margin: 0.15em 0;
   }
 
   .hero-subtitle .subtitle-line {
@@ -1970,6 +1981,12 @@ em {
 
   .hero-title {
     font-size: 4rem;
+    line-height: 0.9;
+  }
+  
+  .hero-title br {
+    display: block;
+    margin: 0.1em 0;
   }
 
   .hero-subtitle .subtitle-line {
