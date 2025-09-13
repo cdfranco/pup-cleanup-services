@@ -354,7 +354,7 @@ function validateQuoteForm() {
   return isValid;
 }
 
-// Submit quote form
+// Submit quote form to Airtable
 function submitQuoteForm() {
   const form = document.getElementById('quotePopupForm');
   if (!form) return;
@@ -362,24 +362,85 @@ function submitQuoteForm() {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
-  // Add form metadata
-  data['form-name'] = 'quote-popup';
-  data['submission-time'] = new Date().toISOString();
-  data['form-source'] = 'quote-popup';
+  // Get cleanup areas as array
+  const cleanupAreas = Array.from(document.querySelectorAll('input[name="cleanupAreas"]:checked'))
+    .map(checkbox => checkbox.value);
+
+  // Get frequency label
+  const frequencyLabels = ['1x Week', '2x Week', 'Bi-Weekly', '1x Month', 'One Time'];
+  const frequencyLabel = frequencyLabels[parseInt(data.cleanupFrequency) || 0];
+
+  // Get number of dogs label
+  const dogLabels = ['1 Dog', '2 Dogs', '3 Dogs', '4 Dogs', '5 Dogs'];
+  const dogLabel = dogLabels[parseInt(data.numberOfDogs) - 1] || '1 Dog';
+
+  // Calculate final price
+  const numberOfDogs = parseInt(data.numberOfDogs) || 1;
+  const cleanupFrequency = parseInt(data.cleanupFrequency) || 0;
+  const pricingMatrix = {
+    1: { 0: 25, 1: 45, 2: 30, 3: 50, 4: 60 },
+    2: { 0: 30, 1: 54, 2: 35, 3: 60, 4: 70 },
+    3: { 0: 35, 1: 63, 2: 40, 3: 70, 4: 80 },
+    4: { 0: 40, 1: 72, 2: 45, 3: 80, 4: 90 },
+    5: { 0: 45, 1: 81, 2: 50, 3: 90, 4: 100 }
+  };
+  const basePrice = pricingMatrix[numberOfDogs]?.[cleanupFrequency] || 25;
+  let areaMultiplier = 1.0;
+  if (cleanupAreas.length > 0) {
+    const hasAllAreas = cleanupAreas.includes('all');
+    if (hasAllAreas) {
+      areaMultiplier = 1.2;
+    } else if (cleanupAreas.length > 2) {
+      areaMultiplier = 1.1;
+    }
+  }
+  const calculatedPrice = Math.round(basePrice * areaMultiplier);
+
+  // Prepare Airtable record
+  const airtableRecord = {
+    fields: {
+      'First Name': data.firstName || '',
+      'Last Name': data.lastName || '',
+      'Email': data.email || '',
+      'Phone': data.cellPhone || '',
+      'Address': data.address || '',
+      'City': data.city || '',
+      'State': data.state || '',
+      'Zip Code': data.zipCode || '',
+      'Number of Dogs': dogLabel,
+      'Cleanup Frequency': frequencyLabel,
+      'Cleanup Areas': cleanupAreas.join(', '),
+      'Estimated Price': `$${calculatedPrice}`,
+      'Property Size': data.propertySize || '',
+      'Special Instructions': data.specialInstructions || '',
+      'Submission Time': new Date().toISOString(),
+      'Form Source': 'Quote Popup'
+    }
+  };
 
   // Show loading state
   const submitButton = form.querySelector('button[type="submit"]');
   const originalText = submitButton.textContent;
   submitButton.disabled = true;
-  submitButton.innerHTML =
-    '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+  submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
-  // Submit to Netlify
-  fetch('/', {
+  // Submit to Airtable
+  // TODO: Replace 'appYOUR_BASE_ID' with your actual Airtable base ID
+  // You can find this in your Airtable API documentation
+  fetch('https://api.airtable.com/v0/appYOUR_BASE_ID/Quote%20Submissions', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(data).toString(),
+    headers: {
+      'Authorization': 'Bearer patjZFzfSWa76XC5A.302e476a7a237d9c5a74be60f6bd9828fd0f9f1c2ce510cb57cd713c94ec1d28',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(airtableRecord)
   })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Airtable API error: ${response.status} ${response.statusText}`);
+      }
+      return response.json();
+    })
     .then(() => {
       showQuoteNotification(
         "Thank you! We'll contact you soon with your quote.",
@@ -392,7 +453,7 @@ function submitQuoteForm() {
       }, 2000);
     })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error('Error submitting to Airtable:', error);
       showQuoteNotification(
         'Sorry, there was an error. Please try again.',
         'error'
