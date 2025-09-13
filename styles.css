@@ -531,6 +531,22 @@ em {
   display: none;
 }
 
+/* Ensure desktop description overlay is always visible on desktop */
+@media (min-width: 769px) {
+  .desktop-description {
+    display: block !important;
+    background: linear-gradient(
+      135deg,
+      rgba(153, 186, 221, 0.15),
+      rgba(123, 163, 199, 0.1)
+    ) !important;
+    padding: 25px 30px !important;
+    border: 1px solid rgba(153, 186, 221, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(3px) !important;
+  }
+}
+
 .hero-buttons {
   display: flex;
   flex-direction: column;
