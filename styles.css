@@ -1809,6 +1809,22 @@ em {
     align-items: center;
   }
 
+  /* Make CTA buttons smaller on mobile */
+  .cta-button {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+
+  .cta-button.large {
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+
+  .hero .cta-button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+  }
+
   .hero-title {
     font-size: 4.2rem;
     line-height: 0.85;
