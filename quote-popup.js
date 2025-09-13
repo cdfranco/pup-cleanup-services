@@ -429,9 +429,17 @@ function submitQuoteForm() {
 
   // Submit to Airtable
   // Note: Table name is case-sensitive and spaces are URL-encoded
-  // SECURITY: API key should be stored in environment variables, not in code
-  const airtableToken = 'YOUR_AIRTABLE_TOKEN_HERE'; // Replace with your token
-  fetch('https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions', {
+  // SECURITY: API key is loaded from configuration file
+  const airtableToken = window.APP_CONFIG?.AIRTABLE_TOKEN || 'YOUR_NEW_TOKEN_HERE';
+  const airtableUrl = window.APP_CONFIG?.AIRTABLE_API_URL || 'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
+  
+  if (airtableToken === 'YOUR_NEW_TOKEN_HERE') {
+    console.error('Airtable token not configured. Please update config.js with your token.');
+    showQuoteNotification('Configuration error. Please contact support.', 'error');
+    return;
+  }
+  
+  fetch(airtableUrl, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${airtableToken}`,
