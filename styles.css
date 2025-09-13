@@ -543,6 +543,7 @@ em {
   
   .desktop-description {
     display: block !important;
+    text-align: left !important;
     background: linear-gradient(
       135deg,
       rgba(153, 186, 221, 0.15),
@@ -577,6 +578,15 @@ em {
     overflow: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
+  }
+  
+  /* Ensure desktop description is left-aligned on desktop and tablet */
+  .hero-description {
+    text-align: left !important;
+  }
+  
+  .desktop-description {
+    text-align: left !important;
   }
 }
 
