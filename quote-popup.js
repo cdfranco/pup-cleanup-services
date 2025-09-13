@@ -474,18 +474,18 @@ function calculatePrice() {
 // Initialize scroll trigger
 function initializeScrollTrigger() {
   let popupShown = false;
-  const heroSection = document.querySelector('.hero');
+  const scheduleSection = document.querySelector('.schedule');
 
-  if (!heroSection) return;
+  if (!scheduleSection) return;
 
   window.addEventListener('scroll', function () {
     if (popupShown) return; // Only show once per session
 
-    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    const scheduleBottom = scheduleSection.offsetTop + scheduleSection.offsetHeight;
     const scrollPosition = window.pageYOffset + window.innerHeight;
 
-    // Show popup when user scrolls past 70% of the hero section
-    if (scrollPosition > heroBottom * 0.7) {
+    // Show popup when user scrolls past the "Personalized Cleanups for Your Needs" section
+    if (scrollPosition > scheduleBottom) {
       popupShown = true;
       setTimeout(() => {
         showQuotePopup();
