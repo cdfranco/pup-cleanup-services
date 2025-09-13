@@ -2005,6 +2005,11 @@ em {
     display: block;
     margin: 0.2em 0;
   }
+  
+  .hero .cta-button {
+    font-size: 0.8rem;
+    padding: 12px 25px;
+  }
 
   /* Hide paw prints on small mobile too */
   .paw-trail {
@@ -2022,7 +2027,7 @@ em {
 
   .hero .cta-button {
     padding: 15px 30px;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .section-title {
