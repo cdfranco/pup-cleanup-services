@@ -481,7 +481,8 @@ function initializeScrollTrigger() {
   window.addEventListener('scroll', function () {
     if (popupShown) return; // Only show once per session
 
-    const scheduleBottom = scheduleSection.offsetTop + scheduleSection.offsetHeight;
+    const scheduleBottom =
+      scheduleSection.offsetTop + scheduleSection.offsetHeight;
     const scrollPosition = window.pageYOffset + window.innerHeight;
 
     // Show popup when user scrolls past the "Personalized Cleanups for Your Needs" section
