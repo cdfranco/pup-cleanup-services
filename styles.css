@@ -1031,6 +1031,13 @@ em {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    /* Improve image quality on mobile */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .testimonial-content {
@@ -1853,6 +1860,17 @@ em {
     object-fit: cover;
   }
 
+  /* Additional optimization for very small screens */
+  .future {
+    background-size: 100% auto;
+    background-position: center top;
+    /* Force hardware acceleration for better rendering */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    will-change: background-image;
+  }
+}
+
   .container {
     padding: 0 15px;
   }
@@ -2641,6 +2659,13 @@ html {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    /* Improve image quality on tablet */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 }
 
