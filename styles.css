@@ -1810,7 +1810,7 @@ em {
   }
 
   .hero-title {
-    font-size: 5.5rem;
+    font-size: 4.2rem;
     line-height: 0.85;
   }
   
@@ -1980,7 +1980,7 @@ em {
   }
 
   .hero-title {
-    font-size: 4.8rem;
+    font-size: 3.5rem;
     line-height: 0.85;
   }
   
@@ -1991,6 +1991,19 @@ em {
 
   .hero-subtitle .subtitle-line {
     font-size: 1.2rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 3rem;
+    line-height: 0.9;
+  }
+  
+  .hero-title br {
+    display: block;
+    margin: 0.2em 0;
   }
 
   /* Hide paw prints on small mobile too */
