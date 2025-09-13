@@ -475,7 +475,7 @@ em {
 
 .hero-title {
   font-family: 'Fredoka One', 'Nunito', sans-serif;
-  font-size: 4.5rem;
+  font-size: 5.5rem;
   margin-bottom: 2.5rem;
   color: var(--white);
   text-shadow: none;
@@ -535,6 +535,10 @@ em {
 @media (min-width: 769px) {
   .mobile-description {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
   }
   
   .desktop-description {
@@ -555,7 +559,25 @@ em {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: flex-start;
+  align-items: flex-start !important;
+}
+
+/* Ensure left alignment on desktop and tablet */
+@media (min-width: 769px) {
+  .hero-buttons {
+    align-items: flex-start !important;
+  }
+  
+  /* Completely hide mobile description on desktop and tablet */
+  .mobile-description {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
 .hocl-button {
@@ -1773,7 +1795,7 @@ em {
   }
 
   .hero-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
 
   .hero-subtitle .subtitle-line {
@@ -1937,7 +1959,7 @@ em {
   }
 
   .hero-title {
-    font-size: 3rem;
+    font-size: 3.2rem;
   }
 
   .hero-subtitle .subtitle-line {
