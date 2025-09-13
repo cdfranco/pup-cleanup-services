@@ -1168,6 +1168,248 @@
       </div>
     </footer>
 
+    <!-- Quote Popup Form -->
+    <div id="quotePopup" class="quote-popup">
+      <div class="quote-popup-content">
+        <div class="quote-popup-header">
+          <h2>Get Your Free Quote</h2>
+          <button class="quote-popup-close" id="closeQuotePopup">
+            &times;
+          </button>
+        </div>
+
+        <form id="quotePopupForm" class="quote-popup-form">
+          <!-- Service Information -->
+          <div class="quote-section">
+            <h3>Service Information</h3>
+
+            <div class="quote-form-row">
+              <div class="quote-form-group">
+                <label for="popupZipCode">Zip Code *</label>
+                <input
+                  type="text"
+                  id="popupZipCode"
+                  name="zipCode"
+                  placeholder="30605"
+                  required
+                />
+              </div>
+
+              <div class="quote-form-group">
+                <label for="popupCouponCode">Coupon Code</label>
+                <input
+                  type="text"
+                  id="popupCouponCode"
+                  name="couponCode"
+                  placeholder="Enter code if you have one"
+                />
+              </div>
+            </div>
+
+            <div class="quote-form-row">
+              <div class="quote-form-group">
+                <label for="popupNumberOfDogs">Number Of Dogs *</label>
+                <div class="quote-slider-container">
+                  <input
+                    type="range"
+                    id="popupNumberOfDogs"
+                    name="numberOfDogs"
+                    min="1"
+                    max="5"
+                    value="1"
+                    class="quote-slider"
+                    required
+                  />
+                  <div class="quote-slider-labels">
+                    <span>1</span><span>2</span><span>3</span><span>4</span
+                    ><span>5</span>
+                  </div>
+                  <div class="quote-slider-value">
+                    <span id="popupNumberOfDogsValue">1 Dog</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="quote-form-group">
+                <label for="popupCleanupFrequency">Cleanup Frequency *</label>
+                <div class="quote-slider-container">
+                  <input
+                    type="range"
+                    id="popupCleanupFrequency"
+                    name="cleanupFrequency"
+                    min="0"
+                    max="4"
+                    value="1"
+                    class="quote-slider"
+                    required
+                  />
+                  <div class="quote-slider-labels">
+                    <span>1x Week</span><span>2x Week</span><span>Bi-Weekly</span
+                    ><span>1x Month</span><span>One Time</span>
+                  </div>
+                  <div class="quote-slider-value">
+                    <span id="popupCleanupFrequencyValue">2x Week</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="quote-form-group">
+              <label for="popupLastCleanup">Last Time Yard Was Cleaned *</label>
+              <select id="popupLastCleanup" name="lastCleanup" required>
+                <option value="">Select timeframe</option>
+                <option value="one-week">One Week</option>
+                <option value="two-weeks">Two Weeks</option>
+                <option value="three-weeks">Three Weeks</option>
+                <option value="one-month">One Month</option>
+                <option value="two-months">Two Months</option>
+                <option value="3-4-months">3-4 Months</option>
+                <option value="5-6-months">5-6 Months</option>
+                <option value="7-9-months">7-9 Months</option>
+                <option value="10-plus-months">10+ Months</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="quote-section">
+            <h3>Contact Information</h3>
+
+            <div class="quote-form-row">
+              <div class="quote-form-group">
+                <label for="popupFirstName">First Name *</label>
+                <input
+                  type="text"
+                  id="popupFirstName"
+                  name="firstName"
+                  placeholder="First Name"
+                  required
+                />
+              </div>
+
+              <div class="quote-form-group">
+                <label for="popupLastName">Last Name *</label>
+                <input
+                  type="text"
+                  id="popupLastName"
+                  name="lastName"
+                  placeholder="Last Name"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="quote-form-row">
+              <div class="quote-form-group">
+                <label for="popupEmail">Email Address *</label>
+                <input
+                  type="email"
+                  id="popupEmail"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+
+              <div class="quote-form-group">
+                <label for="popupCellPhone">Phone Number *</label>
+                <input
+                  type="tel"
+                  id="popupCellPhone"
+                  name="cellPhone"
+                  placeholder="(###) ###-####"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Information -->
+          <div class="quote-section">
+            <h3>Property Information</h3>
+
+            <div class="quote-form-group">
+              <label>Which areas should we clean? *</label>
+              <div class="quote-checkbox-grid">
+                <label class="quote-checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="cleanupAreas"
+                    value="front-yard"
+                  />
+                  <span class="quote-checkmark"></span>
+                  Front Yard
+                </label>
+                <label class="quote-checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="cleanupAreas"
+                    value="back-yard"
+                  />
+                  <span class="quote-checkmark"></span>
+                  Back Yard
+                </label>
+                <label class="quote-checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="cleanupAreas"
+                    value="flower-beds"
+                  />
+                  <span class="quote-checkmark"></span>
+                  Flower Beds
+                </label>
+                <label class="quote-checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="cleanupAreas"
+                    value="deck-patio"
+                  />
+                  <span class="quote-checkmark"></span>
+                  Deck/Patio
+                </label>
+                <label class="quote-checkbox-label">
+                  <input type="checkbox" name="cleanupAreas" value="all" />
+                  <span class="quote-checkmark"></span>
+                  All Areas
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price Estimate Display -->
+          <div class="quote-price-display">
+            <div class="quote-price-card">
+              <h3>Your Estimated Price</h3>
+              <div class="quote-price-amount" id="quotePriceAmount">
+                $25 - $35
+              </div>
+              <p class="quote-price-note">
+                Exact quote provided after yard inspection
+              </p>
+              <p class="quote-price-disclaimer">
+                Price does not include applicable sales tax
+              </p>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="quote-form-actions">
+            <button
+              type="button"
+              class="quote-btn quote-btn-secondary"
+              id="getFullQuote"
+            >
+              Get Full Quote
+            </button>
+            <button type="submit" class="quote-btn quote-btn-primary">
+              Submit Quick Quote
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="quote-popup.js"></script>
   </body>
 </html>

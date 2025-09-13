@@ -1,0 +1,548 @@
+// Quote Popup JavaScript
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('Quote popup loaded successfully!');
+
+  // Initialize quote popup functionality
+  initializeQuotePopup();
+  initializeQuoteForm();
+  initializePriceCalculation();
+  initializeScrollTrigger();
+});
+
+// Initialize quote popup functionality
+function initializeQuotePopup() {
+  const quotePopup = document.getElementById('quotePopup');
+  const closeButton = document.getElementById('closeQuotePopup');
+  const getFullQuoteButton = document.getElementById('getFullQuote');
+
+  if (!quotePopup) return;
+
+  // Close popup when clicking close button
+  if (closeButton) {
+    closeButton.addEventListener('click', closeQuotePopup);
+  }
+
+  // Close popup when clicking outside
+  quotePopup.addEventListener('click', function (e) {
+    if (e.target === quotePopup) {
+      closeQuotePopup();
+    }
+  });
+
+  // Close popup with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && quotePopup.classList.contains('show')) {
+      closeQuotePopup();
+    }
+  });
+
+  // Redirect to full quote page
+  if (getFullQuoteButton) {
+    getFullQuoteButton.addEventListener('click', function () {
+      closeQuotePopup();
+      window.location.href = 'client-onboarding.html';
+    });
+  }
+}
+
+// Show quote popup
+function showQuotePopup() {
+  const quotePopup = document.getElementById('quotePopup');
+  if (quotePopup) {
+    quotePopup.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+}
+
+// Close quote popup
+function closeQuotePopup() {
+  const quotePopup = document.getElementById('quotePopup');
+  if (quotePopup) {
+    quotePopup.classList.remove('show');
+    document.body.style.overflow = 'auto'; // Restore scrolling
+  }
+}
+
+// Initialize quote form functionality
+function initializeQuoteForm() {
+  const form = document.getElementById('quotePopupForm');
+  if (!form) return;
+
+  // Form submission handler
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (validateQuoteForm()) {
+      submitQuoteForm();
+    }
+  });
+
+  // Initialize sliders
+  initializeQuoteSliders();
+
+  // Initialize phone formatting
+  initializeQuotePhoneFormatting();
+
+  // Real-time validation
+  initializeQuoteValidation();
+}
+
+// Initialize quote sliders
+function initializeQuoteSliders() {
+  // Number of dogs slider
+  const numberOfDogsSlider = document.getElementById('popupNumberOfDogs');
+  const numberOfDogsValue = document.getElementById('popupNumberOfDogsValue');
+
+  if (numberOfDogsSlider && numberOfDogsValue) {
+    const dogLabels = ['1 Dog', '2 Dogs', '3 Dogs', '4 Dogs', '5 Dogs'];
+
+    numberOfDogsSlider.addEventListener('input', function () {
+      const value = parseInt(this.value);
+      numberOfDogsValue.textContent = dogLabels[value - 1];
+      updateQuoteSliderBackground(this);
+      updateQuoteActiveLabel(
+        this,
+        this.parentNode.querySelector('.quote-slider-labels')
+      );
+      calculatePrice(); // Recalculate price when dogs change
+    });
+
+    // Initialize on load
+    numberOfDogsValue.textContent = dogLabels[numberOfDogsSlider.value - 1];
+    updateQuoteSliderBackground(numberOfDogsSlider);
+    updateQuoteActiveLabel(
+      numberOfDogsSlider,
+      numberOfDogsSlider.parentNode.querySelector('.quote-slider-labels')
+    );
+  }
+
+  // Cleanup frequency slider
+  const cleanupFrequencySlider = document.getElementById(
+    'popupCleanupFrequency'
+  );
+  const cleanupFrequencyValue = document.getElementById(
+    'popupCleanupFrequencyValue'
+  );
+
+  if (cleanupFrequencySlider && cleanupFrequencyValue) {
+    const frequencyLabels = [
+      '1x Week',
+      '2x Week',
+      'Bi-Weekly',
+      '1x Month',
+      'One Time',
+    ];
+
+    cleanupFrequencySlider.addEventListener('input', function () {
+      const value = parseInt(this.value);
+      cleanupFrequencyValue.textContent = frequencyLabels[value];
+      updateQuoteSliderBackground(this);
+      updateQuoteActiveLabel(
+        this,
+        this.parentNode.querySelector('.quote-slider-labels')
+      );
+      calculatePrice(); // Recalculate price when frequency changes
+    });
+
+    // Initialize on load
+    cleanupFrequencyValue.textContent =
+      frequencyLabels[cleanupFrequencySlider.value];
+    updateQuoteSliderBackground(cleanupFrequencySlider);
+    updateQuoteActiveLabel(
+      cleanupFrequencySlider,
+      cleanupFrequencySlider.parentNode.querySelector('.quote-slider-labels')
+    );
+  }
+}
+
+// Update quote slider background
+function updateQuoteSliderBackground(slider) {
+  const value = parseInt(slider.value);
+  const max = parseInt(slider.max);
+  const percentage = (value / max) * 100;
+
+  slider.style.background = `linear-gradient(to right, #2c3e50 0%, #2c3e50 ${percentage}%, #e9ecef ${percentage}%, #e9ecef 100%)`;
+}
+
+// Update active label styling
+function updateQuoteActiveLabel(slider, labelsContainer) {
+  if (!labelsContainer) return;
+
+  const labels = labelsContainer.querySelectorAll('span');
+  const value = parseInt(slider.value);
+
+  labels.forEach((label, index) => {
+    label.classList.remove('active');
+    if (index === value) {
+      label.classList.add('active');
+    }
+  });
+}
+
+// Initialize phone formatting
+function initializeQuotePhoneFormatting() {
+  const phoneField = document.getElementById('popupCellPhone');
+  if (phoneField) {
+    phoneField.addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, '');
+
+      if (value.length >= 6) {
+        value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(
+          6,
+          10
+        )}`;
+      } else if (value.length >= 3) {
+        value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+      }
+
+      e.target.value = value;
+    });
+  }
+}
+
+// Initialize form validation
+function initializeQuoteValidation() {
+  const form = document.getElementById('quotePopupForm');
+  if (!form) return;
+
+  const requiredFields = form.querySelectorAll('[required]');
+  requiredFields.forEach((field) => {
+    field.addEventListener('blur', function () {
+      validateQuoteField(this);
+    });
+
+    field.addEventListener('input', function () {
+      clearQuoteFieldError(this);
+    });
+  });
+
+  // Email validation
+  const emailField = document.getElementById('popupEmail');
+  if (emailField) {
+    emailField.addEventListener('blur', function () {
+      validateQuoteEmail(this);
+    });
+  }
+
+  // Phone validation
+  const phoneField = document.getElementById('popupCellPhone');
+  if (phoneField) {
+    phoneField.addEventListener('blur', function () {
+      validateQuotePhone(this);
+    });
+  }
+}
+
+// Validate individual field
+function validateQuoteField(field) {
+  const value = field.value.trim();
+  const isRequired = field.hasAttribute('required');
+
+  if (isRequired && !value) {
+    showQuoteFieldError(field, 'This field is required');
+    return false;
+  }
+
+  clearQuoteFieldError(field);
+  return true;
+}
+
+// Validate email field
+function validateQuoteEmail(field) {
+  const email = field.value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (email && !emailRegex.test(email)) {
+    showQuoteFieldError(field, 'Please enter a valid email address');
+    return false;
+  }
+
+  clearQuoteFieldError(field);
+  return true;
+}
+
+// Validate phone field
+function validateQuotePhone(field) {
+  const phone = field.value.replace(/\D/g, '');
+  const phoneRegex = /^[0-9]{10}$/;
+
+  if (field.value && !phoneRegex.test(phone)) {
+    showQuoteFieldError(field, 'Please enter a valid 10-digit phone number');
+    return false;
+  }
+
+  clearQuoteFieldError(field);
+  return true;
+}
+
+// Show field error
+function showQuoteFieldError(field, message) {
+  clearQuoteFieldError(field);
+
+  field.style.borderColor = '#dc3545';
+
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'quote-field-error';
+  errorDiv.textContent = message;
+  errorDiv.style.cssText = `
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+  `;
+
+  field.parentNode.appendChild(errorDiv);
+}
+
+// Clear field error
+function clearQuoteFieldError(field) {
+  field.style.borderColor = '';
+
+  const existingError = field.parentNode.querySelector('.quote-field-error');
+  if (existingError) {
+    existingError.remove();
+  }
+}
+
+// Validate entire form
+function validateQuoteForm() {
+  const form = document.getElementById('quotePopupForm');
+  if (!form) return false;
+
+  let isValid = true;
+  const requiredFields = form.querySelectorAll('[required]');
+
+  // Clear all existing errors
+  const existingErrors = form.querySelectorAll('.quote-field-error');
+  existingErrors.forEach((error) => error.remove());
+
+  // Validate each required field
+  requiredFields.forEach((field) => {
+    if (!validateQuoteField(field)) {
+      isValid = false;
+    }
+  });
+
+  // Validate email
+  const emailField = document.getElementById('popupEmail');
+  if (emailField && !validateQuoteEmail(emailField)) {
+    isValid = false;
+  }
+
+  // Validate phone
+  const phoneField = document.getElementById('popupCellPhone');
+  if (phoneField && !validateQuotePhone(phoneField)) {
+    isValid = false;
+  }
+
+  // Validate at least one cleanup area is selected
+  const cleanupAreas = form.querySelectorAll(
+    'input[name="cleanupAreas"]:checked'
+  );
+  if (cleanupAreas.length === 0) {
+    showQuoteNotification('Please select at least one area to clean.', 'error');
+    isValid = false;
+  }
+
+  if (!isValid) {
+    showQuoteNotification(
+      'Please fix the errors above before submitting.',
+      'error'
+    );
+  }
+
+  return isValid;
+}
+
+// Submit quote form
+function submitQuoteForm() {
+  const form = document.getElementById('quotePopupForm');
+  if (!form) return;
+
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  // Add form metadata
+  data['form-name'] = 'quote-popup';
+  data['submission-time'] = new Date().toISOString();
+  data['form-source'] = 'quote-popup';
+
+  // Show loading state
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.innerHTML =
+    '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+  // Submit to Netlify
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString(),
+  })
+    .then(() => {
+      showQuoteNotification(
+        "Thank you! We'll contact you soon with your quote.",
+        'success'
+      );
+      form.reset();
+      calculatePrice(); // Reset price display
+      setTimeout(() => {
+        closeQuotePopup();
+      }, 2000);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      showQuoteNotification(
+        'Sorry, there was an error. Please try again.',
+        'error'
+      );
+    })
+    .finally(() => {
+      // Reset button state
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    });
+}
+
+// Initialize price calculation
+function initializePriceCalculation() {
+  // Calculate price on form changes
+  const form = document.getElementById('quotePopupForm');
+  if (!form) return;
+
+  // Listen for changes to form inputs that affect pricing
+  const pricingInputs = form.querySelectorAll(
+    '#popupNumberOfDogs, #popupCleanupFrequency, input[name="cleanupAreas"]'
+  );
+  pricingInputs.forEach((input) => {
+    input.addEventListener('change', calculatePrice);
+    input.addEventListener('input', calculatePrice);
+  });
+
+  // Initial calculation
+  calculatePrice();
+}
+
+// Calculate price based on form inputs
+function calculatePrice() {
+  const numberOfDogs =
+    parseInt(document.getElementById('popupNumberOfDogs')?.value) || 1;
+  const cleanupFrequency =
+    parseInt(document.getElementById('popupCleanupFrequency')?.value) || 1;
+  const cleanupAreas = document.querySelectorAll(
+    'input[name="cleanupAreas"]:checked'
+  );
+
+  // Base pricing structure
+  const basePrice = 25; // Base price for 1 dog, 1x week, basic areas
+  const dogMultiplier = 1 + (numberOfDogs - 1) * 0.3; // 30% increase per additional dog
+
+  // Frequency multipliers
+  const frequencyMultipliers = [1.0, 2.0, 0.6, 0.3, 0.2]; // 1x/week, 2x/week, bi-weekly, 1x/month, one-time
+  const frequencyMultiplier = frequencyMultipliers[cleanupFrequency] || 1.0;
+
+  // Area multipliers
+  let areaMultiplier = 1.0;
+  if (cleanupAreas.length > 0) {
+    const hasAllAreas = Array.from(cleanupAreas).some(
+      (area) => area.value === 'all'
+    );
+    if (hasAllAreas) {
+      areaMultiplier = 1.5;
+    } else {
+      areaMultiplier = 1 + (cleanupAreas.length - 1) * 0.2; // 20% increase per additional area
+    }
+  }
+
+  // Calculate final price
+  const calculatedPrice = Math.round(
+    basePrice * dogMultiplier * frequencyMultiplier * areaMultiplier
+  );
+
+  // Add some variance for realistic pricing
+  const minPrice = Math.max(15, calculatedPrice - 5);
+  const maxPrice = calculatedPrice + 10;
+
+  // Update price display
+  const priceElement = document.getElementById('quotePriceAmount');
+  if (priceElement) {
+    priceElement.textContent = `$${minPrice} - $${maxPrice}`;
+  }
+}
+
+// Initialize scroll trigger
+function initializeScrollTrigger() {
+  let popupShown = false;
+  const heroSection = document.querySelector('.hero');
+
+  if (!heroSection) return;
+
+  window.addEventListener('scroll', function () {
+    if (popupShown) return; // Only show once per session
+
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    const scrollPosition = window.pageYOffset + window.innerHeight;
+
+    // Show popup when user scrolls past 70% of the hero section
+    if (scrollPosition > heroBottom * 0.7) {
+      popupShown = true;
+      setTimeout(() => {
+        showQuotePopup();
+      }, 1000); // Small delay for better UX
+    }
+  });
+}
+
+// Show notification
+function showQuoteNotification(message, type = 'info') {
+  // Remove existing notifications
+  const existingNotifications = document.querySelectorAll(
+    '.quote-notification'
+  );
+  existingNotifications.forEach((notification) => notification.remove());
+
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `quote-notification quote-notification-${type}`;
+  notification.textContent = message;
+
+  // Add styles
+  notification.style.cssText = `
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    background: ${
+      type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#4B9CD3'
+    };
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 10001;
+    max-width: 400px;
+    font-weight: 500;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  `;
+
+  document.body.appendChild(notification);
+
+  // Animate in
+  setTimeout(() => {
+    notification.style.transform = 'translateX(0)';
+  }, 100);
+
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    notification.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 300);
+  }, 5000);
+}
+
+// Add a manual trigger for testing (can be removed in production)
+window.showQuotePopup = showQuotePopup;
