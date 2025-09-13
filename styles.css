@@ -1010,6 +1010,7 @@ em {
   .slogan-banner {
     width: 100vw;
     height: 50vh;
+    margin-top: 25%;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     padding: 0;
@@ -1830,6 +1831,7 @@ em {
   .slogan-banner {
     width: 100vw;
     height: 50vh;
+    margin-top: 25%;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     padding: 0;
@@ -2609,6 +2611,7 @@ html {
   .slogan-banner {
     width: 100vw;
     height: 50vh;
+    margin-top: 25%;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     padding: 0;
