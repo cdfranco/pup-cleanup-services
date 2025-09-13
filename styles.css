@@ -492,7 +492,8 @@ em {
 }
 
 .hero-description {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: -0.5rem;
   text-align: left;
 }
 
@@ -504,16 +505,11 @@ em {
   font-weight: 400;
   max-width: 600px;
   margin: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(153, 186, 221, 0.15),
-    rgba(123, 163, 199, 0.1)
-  );
-  padding: 25px 30px;
-  border-radius: 12px;
-  border: 1px solid rgba(153, 186, 221, 0.3);
-  backdrop-filter: blur(3px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Show desktop description by default, hide mobile */
+.mobile-description {
+  display: none;
 }
 
 .hero-buttons {
@@ -1684,15 +1680,45 @@ em {
 
   .hero-image {
     height: 300px;
-    order: -1;
+    order: 1;
+  }
+
+  /* Show mobile description, hide desktop on mobile */
+  .desktop-description {
+    display: none;
+  }
+
+  .mobile-description {
+    display: block;
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    text-align: center;
+  }
+
+  /* Hide Hypochlorous Acid button on mobile */
+  .desktop-only {
+    display: none;
+  }
+
+  /* Center buttons on mobile */
+  .hero-buttons {
+    align-items: center;
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .hero-subtitle .subtitle-line {
     font-size: 1.1rem;
+  }
+
+  /* Hide paw prints on mobile */
+  .paw-trail {
+    display: none;
   }
 
   .services-grid {
@@ -1797,6 +1823,26 @@ em {
     margin: 0 auto;
   }
 
+  /* Ensure mobile description shows on small screens too */
+  .desktop-description {
+    display: none;
+  }
+
+  .mobile-description {
+    display: block;
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    text-align: center;
+  }
+
+  /* Hide Hypochlorous Acid button on small mobile too */
+  .desktop-only {
+    display: none;
+  }
+
   .hero-buttons {
     align-items: center;
   }
@@ -1807,6 +1853,11 @@ em {
 
   .hero-subtitle .subtitle-line {
     font-size: 1.2rem;
+  }
+
+  /* Hide paw prints on small mobile too */
+  .paw-trail {
+    display: none;
   }
 
   .feature-text {
