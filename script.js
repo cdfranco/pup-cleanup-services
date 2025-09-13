@@ -433,6 +433,49 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// HOCl Dropdown Functionality
+document.addEventListener('DOMContentLoaded', function () {
+  const hoclDropdowns = document.querySelectorAll('.hocl-dropdown');
+  console.log('HOCl dropdowns found:', hoclDropdowns.length);
+
+  hoclDropdowns.forEach((dropdown, index) => {
+    const button = dropdown.querySelector('.hocl-dropdown-btn');
+
+    if (button) {
+      // Add visual indicator that this is clickable
+      button.style.cursor = 'pointer';
+
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log('Dropdown clicked:', index + 1);
+
+        const isActive = dropdown.classList.contains('active');
+
+        // Close all other dropdowns
+        hoclDropdowns.forEach((otherDropdown, otherIndex) => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove('active');
+            console.log('Closed dropdown:', otherIndex + 1);
+          }
+        });
+
+        // Toggle current dropdown
+        if (isActive) {
+          dropdown.classList.remove('active');
+          console.log('Closed dropdown:', index + 1);
+        } else {
+          dropdown.classList.add('active');
+          console.log('Opened dropdown:', index + 1);
+        }
+      });
+    } else {
+      console.log('No button found for dropdown:', index + 1);
+    }
+  });
+});
+
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
   console.log('PUP Cleanup Services website loaded successfully!');

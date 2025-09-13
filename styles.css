@@ -2562,3 +2562,103 @@ html {
     font-size: 1rem;
   }
 }
+
+/* HOCl Dropdown Styles */
+.hocl-section .hocl-dropdown {
+  margin-bottom: 1rem;
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: var(--transition);
+  background: var(--white);
+}
+
+.hocl-section .hocl-dropdown:hover {
+  box-shadow: var(--shadow);
+}
+
+.hocl-section .hocl-dropdown-btn {
+  width: 100%;
+  background: var(--white);
+  border: none;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.hocl-section .hocl-dropdown-btn:hover {
+  background: var(--light-gray);
+}
+
+.hocl-section .hocl-dropdown-btn h4 {
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.hocl-section .hocl-dropdown-btn i {
+  color: var(--carolina-blue);
+  transition: transform 0.3s ease;
+  margin-left: 1rem;
+}
+
+.hocl-section .hocl-dropdown.active .hocl-dropdown-btn i {
+  transform: rotate(180deg);
+}
+
+.hocl-section .hocl-dropdown-content {
+  max-height: 0 !important;
+  overflow: hidden !important;
+  transition: max-height 0.3s ease;
+  background: var(--light-gray);
+  opacity: 0;
+}
+
+.hocl-section .hocl-dropdown.active .hocl-dropdown-content {
+  max-height: 300px !important;
+  opacity: 1;
+}
+
+.hocl-section .hocl-dropdown-content p {
+  margin: 0;
+  padding: 1rem 1.5rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Ensure content is hidden by default */
+.hocl-section .hocl-dropdown:not(.active) .hocl-dropdown-content {
+  display: none !important;
+}
+
+.hocl-section .hocl-dropdown.active .hocl-dropdown-content {
+  display: block !important;
+}
+
+/* Override old hocl-feature styles */
+.hocl-dropdown .hocl-feature {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.hocl-dropdown .hocl-feature h4 {
+  margin-bottom: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.hocl-dropdown .hocl-feature p {
+  color: inherit;
+  line-height: inherit;
+  margin: inherit;
+}
