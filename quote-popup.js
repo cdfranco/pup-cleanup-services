@@ -420,6 +420,8 @@ function submitQuoteForm() {
 
   // Debug logging
   console.log('Sending data to Airtable:', airtableRecord);
+  console.log('Airtable URL:', airtableUrl);
+  console.log('Airtable Token (first 10 chars):', airtableToken.substring(0, 10) + '...');
 
   // Show loading state
   const submitButton = form.querySelector('button[type="submit"]');
