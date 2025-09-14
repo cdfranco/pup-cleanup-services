@@ -728,3 +728,5 @@ function showQuoteNotification(message, type = 'info') {
 // Add a manual trigger for testing (can be removed in production)
 window.showQuotePopup = showQuotePopup;
 
+
+
