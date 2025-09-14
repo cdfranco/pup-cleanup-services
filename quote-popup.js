@@ -80,11 +80,15 @@ function initializeQuoteForm() {
     console.log('Form submit event triggered!');
     e.preventDefault();
 
-    if (validateQuoteForm()) {
+    console.log('About to validate form...');
+    const isValid = validateQuoteForm();
+    console.log('Form validation result:', isValid);
+    
+    if (isValid) {
       console.log('Form validation passed, submitting...');
       submitQuoteForm();
     } else {
-      console.log('Form validation failed');
+      console.log('Form validation failed - check form fields');
     }
   });
 
@@ -378,8 +382,13 @@ function validateQuoteForm() {
 
 // Submit quote form to Airtable
 function submitQuoteForm() {
+  console.log('submitQuoteForm function called!');
   const form = document.getElementById('quotePopupForm');
-  if (!form) return;
+  if (!form) {
+    console.error('Form not found in submitQuoteForm!');
+    return;
+  }
+  console.log('Form found, proceeding with submission...');
 
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
@@ -467,8 +476,10 @@ function submitQuoteForm() {
   // SECURITY: API key is loaded from configuration file
 
   // Use hardcoded values to avoid ReferenceError
-  const airtableToken = 'pat6xbX6JkcfvVxyn.a69bea39807904f01a401a65ff3166bfd2dc29c41e1ffd23882a0962b8fbd3ed';
-  const airtableUrl = 'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
+  const airtableToken =
+    'pat6xbX6JkcfvVxyn.a69bea39807904f01a401a65ff3166bfd2dc29c41e1ffd23882a0962b8fbd3ed';
+  const airtableUrl =
+    'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
 
   console.log('Using hardcoded Airtable values');
   console.log('Token:', airtableToken.substring(0, 10) + '...');
