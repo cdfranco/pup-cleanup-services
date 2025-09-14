@@ -386,7 +386,7 @@ function submitQuoteForm() {
 
   // Declare variables at the top to avoid ReferenceError
   const airtableToken =
-    'pat6xbX6JkcfvVxyn.a69bea39807904f01a401a65ff3166bfd2dc29c41e1ffd23882a0962b8fbd3ed';
+    'patKiY8GXonzb6NQM.87d482468b9a0bf1db138d595dfdf9814394ce7672bcbc1e9eca79681b625461';
   const airtableUrl =
     'https://api.airtable.com/v0/apphutV1MB51S2GIM/tblr90PuCaOOOtivp';
 
@@ -727,3 +727,4 @@ function showQuoteNotification(message, type = 'info') {
 
 // Add a manual trigger for testing (can be removed in production)
 window.showQuotePopup = showQuotePopup;
+
