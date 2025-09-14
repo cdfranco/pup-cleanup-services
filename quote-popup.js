@@ -383,6 +383,11 @@ function validateQuoteForm() {
 // Submit quote form to Airtable
 function submitQuoteForm() {
   console.log('submitQuoteForm function called!');
+  
+  // Declare variables at the top to avoid ReferenceError
+  const airtableToken = 'pat6xbX6JkcfvVxyn.a69bea39807904f01a401a65ff3166bfd2dc29c41e1ffd23882a0962b8fbd3ed';
+  const airtableUrl = 'https://api.airtable.com/v0/apphutV1MB51S2GIM/tblr90PuCaOOOtivp';
+  
   const form = document.getElementById('quotePopupForm');
   if (!form) {
     console.error('Form not found in submitQuoteForm!');
@@ -474,12 +479,6 @@ function submitQuoteForm() {
   // Submit to Airtable
   // Note: Table name is case-sensitive and spaces are URL-encoded
   // SECURITY: API key is loaded from configuration file
-
-  // Use hardcoded values to avoid ReferenceError
-  const airtableToken =
-    'pat6xbX6JkcfvVxyn.a69bea39807904f01a401a65ff3166bfd2dc29c41e1ffd23882a0962b8fbd3ed';
-  const airtableUrl =
-    'https://api.airtable.com/v0/apphutV1MB51S2GIM/tblr90PuCaOOOtivp';
 
   console.log('Using hardcoded Airtable values');
   console.log('Token:', airtableToken.substring(0, 10) + '...');
@@ -726,6 +725,3 @@ function showQuoteNotification(message, type = 'info') {
 
 // Add a manual trigger for testing (can be removed in production)
 window.showQuotePopup = showQuotePopup;
-
-
-
