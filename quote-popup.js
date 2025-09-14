@@ -465,17 +465,25 @@ function submitQuoteForm() {
   // Submit to Airtable
   // Note: Table name is case-sensitive and spaces are URL-encoded
   // SECURITY: API key is loaded from configuration file
-  
+
   // Check if config is loaded
   if (!window.APP_CONFIG) {
-    console.error('APP_CONFIG not loaded! Check if config.js is loaded properly.');
-    showQuoteNotification('Configuration error. Please refresh the page.', 'error');
+    console.error(
+      'APP_CONFIG not loaded! Check if config.js is loaded properly.'
+    );
+    showQuoteNotification(
+      'Configuration error. Please refresh the page.',
+      'error'
+    );
     return;
   }
-  
-  const airtableToken = window.APP_CONFIG.AIRTABLE_TOKEN || 'YOUR_NEW_TOKEN_HERE';
-  const airtableUrl = window.APP_CONFIG.AIRTABLE_API_URL || 'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
-  
+
+  const airtableToken =
+    window.APP_CONFIG.AIRTABLE_TOKEN || 'YOUR_NEW_TOKEN_HERE';
+  const airtableUrl =
+    window.APP_CONFIG.AIRTABLE_API_URL ||
+    'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
+
   console.log('Config loaded:', window.APP_CONFIG);
   console.log('Token from config:', airtableToken);
   console.log('URL from config:', airtableUrl);
