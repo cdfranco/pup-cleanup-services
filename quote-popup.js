@@ -458,7 +458,7 @@ function submitQuoteForm() {
       'Estimated Price': `$${calculatedPrice}`,
       'Property Size': data.propertySize || '',
       'Special Instructions': data.specialInstructions || '',
-      'Submission Time': new Date().toISOString(),
+      'Submission Time': new Date().toLocaleDateString(),
       'Form Source': 'Quote Popup',
     },
   };
