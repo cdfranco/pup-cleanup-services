@@ -388,7 +388,7 @@ function submitQuoteForm() {
   const airtableToken =
     'pat6xbX6JkcfvVxyn.a69bea39807904f01a401a65ff3166bfd2dc29c41e1ffd23882a0962b8fbd3ed';
   const airtableUrl =
-    'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
+    'https://api.airtable.com/v0/apphutV1MB51S2GIM/tblr90PuCaOOOtivp';
 
   const form = document.getElementById('quotePopupForm');
   if (!form) {
