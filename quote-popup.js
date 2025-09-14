@@ -384,11 +384,20 @@ function validateQuoteForm() {
 function submitQuoteForm() {
   console.log('submitQuoteForm function called!');
 
-  // Declare variables at the top to avoid ReferenceError
-  const airtableToken =
-    'patt9yAWFBYo5m2YG.c74ac32c51ff3ffc0939813fe641648b4680932831b37a12c9828c3742964d98';
-  const airtableUrl =
-    'https://api.airtable.com/v0/apphutV1MB51S2GIM/tblr90PuCaOOOtivp';
+  // Get configuration from config.js
+  if (!window.APP_CONFIG) {
+    console.error(
+      'Configuration not loaded. Make sure config.js is loaded before this script.'
+    );
+    showQuoteNotification(
+      'Configuration error. Please contact support.',
+      'error'
+    );
+    return;
+  }
+
+  const airtableToken = window.APP_CONFIG.AIRTABLE_TOKEN;
+  const airtableUrl = window.APP_CONFIG.AIRTABLE_API_URL;
 
   const form = document.getElementById('quotePopupForm');
   if (!form) {
@@ -482,11 +491,11 @@ function submitQuoteForm() {
   // Note: Table name is case-sensitive and spaces are URL-encoded
   // SECURITY: API key is loaded from configuration file
 
-  console.log('Using hardcoded Airtable values');
+  console.log('Using Airtable configuration from config.js');
   console.log('Token:', airtableToken.substring(0, 10) + '...');
   console.log('URL:', airtableUrl);
 
-  if (airtableToken === 'YOUR_NEW_TOKEN_HERE') {
+  if (!airtableToken || airtableToken === 'YOUR_ACTUAL_AIRTABLE_TOKEN_HERE') {
     console.error(
       'Airtable token not configured. Please update config.js with your token.'
     );
@@ -727,6 +736,3 @@ function showQuoteNotification(message, type = 'info') {
 
 // Add a manual trigger for testing (can be removed in production)
 window.showQuotePopup = showQuotePopup;
-
-
-
