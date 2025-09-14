@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initializeQuoteForm();
   initializePriceCalculation();
   initializeScrollTrigger();
-  
+
   console.log('All quote popup functions initialized');
 });
 
@@ -91,7 +91,7 @@ function initializeQuoteForm() {
   // Also add click handler to submit button as backup
   const submitButton = form.querySelector('button[type="submit"]');
   if (submitButton) {
-    submitButton.addEventListener('click', function(e) {
+    submitButton.addEventListener('click', function (e) {
       console.log('Submit button clicked!');
       // Let the form submit event handle it
     });
@@ -465,11 +465,20 @@ function submitQuoteForm() {
   // Submit to Airtable
   // Note: Table name is case-sensitive and spaces are URL-encoded
   // SECURITY: API key is loaded from configuration file
-  const airtableToken =
-    window.APP_CONFIG?.AIRTABLE_TOKEN || 'YOUR_NEW_TOKEN_HERE';
-  const airtableUrl =
-    window.APP_CONFIG?.AIRTABLE_API_URL ||
-    'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
+  
+  // Check if config is loaded
+  if (!window.APP_CONFIG) {
+    console.error('APP_CONFIG not loaded! Check if config.js is loaded properly.');
+    showQuoteNotification('Configuration error. Please refresh the page.', 'error');
+    return;
+  }
+  
+  const airtableToken = window.APP_CONFIG.AIRTABLE_TOKEN || 'YOUR_NEW_TOKEN_HERE';
+  const airtableUrl = window.APP_CONFIG.AIRTABLE_API_URL || 'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
+  
+  console.log('Config loaded:', window.APP_CONFIG);
+  console.log('Token from config:', airtableToken);
+  console.log('URL from config:', airtableUrl);
 
   if (airtableToken === 'YOUR_NEW_TOKEN_HERE') {
     console.error(
