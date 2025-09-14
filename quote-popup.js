@@ -478,11 +478,9 @@ function submitQuoteForm() {
     return;
   }
 
-  const airtableToken =
-    window.APP_CONFIG.AIRTABLE_TOKEN || 'YOUR_NEW_TOKEN_HERE';
-  const airtableUrl =
-    window.APP_CONFIG.AIRTABLE_API_URL ||
-    'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
+  // Use hardcoded values to avoid ReferenceError
+  const airtableToken = 'pat6xbX6JkcfvVxyn.a69bea39807904f01a401a65ff3166bfd2dc29c41e1ffd23882a0962b8fbd3ed';
+  const airtableUrl = 'https://api.airtable.com/v0/apphutV1MB51S2GIM/Quote%20Submissions';
 
   console.log('Config loaded:', window.APP_CONFIG);
   console.log('Token from config:', airtableToken);
