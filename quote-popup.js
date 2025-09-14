@@ -386,7 +386,7 @@ function submitQuoteForm() {
 
   // Declare variables at the top to avoid ReferenceError
   const airtableToken =
-    'patKiY8GXonzb6NQM.87d482468b9a0bf1db138d595dfdf9814394ce7672bcbc1e9eca79681b625461';
+    'patt9yAWFBYo5m2YG.c74ac32c51ff3ffc0939813fe641648b4680932831b37a12c9828c3742964d98';
   const airtableUrl =
     'https://api.airtable.com/v0/apphutV1MB51S2GIM/tblr90PuCaOOOtivp';
 
