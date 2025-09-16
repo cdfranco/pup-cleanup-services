@@ -475,12 +475,12 @@ em {
 
 .hero-title {
   font-family: 'Fredoka One', 'Nunito', sans-serif;
-  font-size: 5.5rem;
+  font-size: 6rem;
   margin-bottom: 2.5rem;
   color: var(--white);
   text-shadow: none;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.4;
   letter-spacing: 1px;
 }
 
@@ -493,7 +493,7 @@ em {
 }
 
 /* Tablet hero title styling */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 899px) {
   .hero-title {
     font-size: 5rem !important;
     line-height: 1.4;
@@ -501,7 +501,7 @@ em {
 }
 
 /* Desktop-only hero title styling */
-@media (min-width: 1025px) {
+@media (min-width: 900px) {
   .hero-title {
     font-size: 6.5rem !important;
     line-height: 1.4;
