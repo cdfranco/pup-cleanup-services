@@ -484,6 +484,14 @@ em {
   letter-spacing: 1px;
 }
 
+/* Medium screens hero title styling */
+@media (min-width: 601px) and (max-width: 768px) {
+  .hero-title {
+    font-size: 3.5rem !important;
+    line-height: 1.6;
+  }
+}
+
 /* Tablet hero title styling */
 @media (min-width: 769px) and (max-width: 1024px) {
   .hero-title {
@@ -1723,7 +1731,7 @@ em {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .hamburger {
     display: flex;
   }
