@@ -19,6 +19,8 @@ function initializeForm() {
 
   // Form submission handler
   form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission
+
     if (validateForm()) {
       // Set submission timestamp
       const submissionTime = new Date().toISOString();
@@ -28,12 +30,8 @@ function initializeForm() {
       }
 
       showLoadingState();
-      // Let Netlify handle the form submission
-      // The form will submit normally to Netlify
-      return true;
-    } else {
-      e.preventDefault();
-      return false;
+      // Submit to Airtable instead of Netlify
+      submitToAirtable();
     }
   });
 }
@@ -551,6 +549,164 @@ function initializeSmoothScrolling() {
 document.addEventListener('DOMContentLoaded', function () {
   initializeSmoothScrolling();
 });
+
+// Submit form data to Airtable
+function submitToAirtable() {
+  console.log('Submitting to Airtable...');
+
+  // Get configuration from config.js
+  if (!window.APP_CONFIG) {
+    console.error(
+      'Configuration not loaded. Make sure config.js is loaded before this script.'
+    );
+    showNotification('Configuration error. Please contact support.', 'error');
+    hideLoadingState();
+    return;
+  }
+
+  const airtableToken = window.APP_CONFIG.AIRTABLE_TOKEN;
+  const airtableUrl = window.APP_CONFIG.ONBOARDING_API_URL;
+
+  if (!airtableToken || airtableToken === 'YOUR_ACTUAL_AIRTABLE_TOKEN_HERE') {
+    console.error(
+      'Airtable token not configured. Please update config.js with your token.'
+    );
+    showNotification('Configuration error. Please contact support.', 'error');
+    hideLoadingState();
+    return;
+  }
+
+  const form = document.getElementById('onboardingForm');
+  if (!form) {
+    console.error('Form not found!');
+    showNotification('Form error. Please try again.', 'error');
+    hideLoadingState();
+    return;
+  }
+
+  // Collect form data
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  // Process cleanup areas
+  const cleanupAreas = Array.from(
+    document.querySelectorAll('input[name="cleanupAreas"]:checked')
+  ).map((checkbox) => checkbox.value);
+
+  // Process dog information
+  const numberOfDogs = parseInt(data.numberOfDogs) || 1;
+  const dogInfo = [];
+  for (let i = 1; i <= numberOfDogs; i++) {
+    const dogData = {
+      name: data[`dogName${i}`] || '',
+      breed: data[`dogBreed${i}`] || '',
+      safe: data[`dogSafe${i}`] || '',
+      comments: data[`dogComments${i}`] || '',
+    };
+    if (dogData.name || dogData.breed) {
+      dogInfo.push(dogData);
+    }
+  }
+
+  // Process notifications
+  const notifications = Array.from(
+    document.querySelectorAll('input[name="notifications"]:checked')
+  ).map((checkbox) => checkbox.value);
+
+  const notificationTypes = Array.from(
+    document.querySelectorAll('input[name="notificationType"]:checked')
+  ).map((checkbox) => checkbox.value);
+
+  // Get frequency and dog labels
+  const frequencyLabels = [
+    'Two Times A Week',
+    'Once A Week',
+    'Bi Weekly',
+    'Twice Per Month',
+    'Once A Month',
+    'One Time',
+  ];
+  const frequencyLabel =
+    frequencyLabels[parseInt(data.cleanupFrequency)] || 'Once A Week';
+
+  const dogLabels = ['1 Dog', '2 Dogs', '3 Dogs', '4 Dogs', '5 Dogs'];
+  const dogLabel = dogLabels[parseInt(data.numberOfDogs) - 1] || '1 Dog';
+
+  // Prepare Airtable record
+  const airtableRecord = {
+    fields: {
+      'First Name': data.firstName || '',
+      'Last Name': data.lastName || '',
+      Email: data.email || '',
+      'Home Phone': data.homePhone || '',
+      'Cell Phone': data.cellPhone || '',
+      Address: data.homeAddress || '',
+      City: data.city || '',
+      State: data.state || '',
+      'Zip Code': data.zipCode || '',
+      'Coupon Code': data.couponCode || '',
+      'Number of Dogs': dogLabel,
+      'Cleanup Frequency': frequencyLabel,
+      'Last Cleanup Timeframe': data.lastCleanup || '',
+      'Gate Location': data.gateLocation || '',
+      'Gated Community': data.gatedCommunity || '',
+      'Cleanup Areas': cleanupAreas.join(', '),
+      'Dog Information': JSON.stringify(dogInfo),
+      Notifications: notifications.join(', '),
+      'Notification Message': data.notificationMessage || '',
+      'Notification Types': notificationTypes.join(', '),
+      'Referral Source': data.referralSource || '',
+      'Additional Comments': data.additionalComments || '',
+      'Marketing Consent': data.marketingConsent ? 'Yes' : 'No',
+      'Privacy Policy': data.privacyPolicy ? 'Agreed' : 'Not Agreed',
+      'Terms of Service': data.termsOfService ? 'Agreed' : 'Not Agreed',
+      'Submission Time': new Date().toLocaleString(),
+      'Form Source': 'Client Onboarding Page',
+    },
+  };
+
+  console.log('Sending data to Airtable:', airtableRecord);
+
+  // Submit to Airtable
+  fetch(airtableUrl, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${airtableToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(airtableRecord),
+  })
+    .then((response) => {
+      console.log('Airtable response status:', response.status);
+      if (!response.ok) {
+        return response.text().then((text) => {
+          console.error('Airtable error response:', text);
+          throw new Error(
+            `Airtable API error: ${response.status} ${response.statusText} - ${text}`
+          );
+        });
+      }
+      return response.json();
+    })
+    .then(() => {
+      showNotification(
+        "Thank you! We'll contact you soon with your quote.",
+        'success'
+      );
+      form.reset();
+      // Redirect to thank you page after a short delay
+      setTimeout(() => {
+        window.location.href = 'thank-you.html';
+      }, 2000);
+    })
+    .catch((error) => {
+      console.error('Error submitting to Airtable:', error);
+      showNotification('Sorry, there was an error. Please try again.', 'error');
+    })
+    .finally(() => {
+      hideLoadingState();
+    });
+}
 
 // Initialize custom sliders
 function initializeSliders() {

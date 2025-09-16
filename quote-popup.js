@@ -397,7 +397,7 @@ function submitQuoteForm() {
   }
 
   const airtableToken = window.APP_CONFIG.AIRTABLE_TOKEN;
-  const airtableUrl = window.APP_CONFIG.AIRTABLE_API_URL;
+  const airtableUrl = window.APP_CONFIG.QUOTE_API_URL;
 
   const form = document.getElementById('quotePopupForm');
   if (!form) {
@@ -456,7 +456,7 @@ function submitQuoteForm() {
       'First Name': data.firstName || '',
       'Last Name': data.lastName || '',
       Email: data.email || '',
-      Phone: data.cellPhone || '',
+      'Cell Phone': data.cellPhone || '',
       Address: data.address || '',
       City: data.city || '',
       State: data.state || '',
@@ -464,7 +464,7 @@ function submitQuoteForm() {
       'Number of Dogs': dogLabel,
       'Cleanup Frequency': frequencyLabel,
       'Cleanup Areas': cleanupAreas.join(', '),
-      'Estimated Price': `$${calculatedPrice}`,
+      Price: `$${calculatedPrice}`,
       'Property Size': data.propertySize || '',
       'Special Instructions': data.specialInstructions || '',
       'Submission Time': new Date().toLocaleDateString(),
