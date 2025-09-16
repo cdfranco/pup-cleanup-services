@@ -436,7 +436,7 @@ function submitQuoteForm() {
     2: { 0: 30, 1: 54, 2: 35, 3: 60, 4: 70 },
     3: { 0: 35, 1: 63, 2: 40, 3: 70, 4: 80 },
     4: { 0: 40, 1: 72, 2: 45, 3: 80, 4: 90 },
-    5: { 0: 45, 1: 81, 2: 50, 3: 90, 4: 100 },
+    5: { 0: 40, 1: 75, 2: 50, 3: 90, 4: 100 },
   };
   const basePrice = pricingMatrix[numberOfDogs]?.[cleanupFrequency] || 25;
   let areaMultiplier = 1.0;
@@ -456,7 +456,7 @@ function submitQuoteForm() {
       'First Name': data.firstName || '',
       'Last Name': data.lastName || '',
       Email: data.email || '',
-      'Cell Phone': data.cellPhone || '',
+      Phone: data.cellPhone || '',
       Address: data.address || '',
       City: data.city || '',
       State: data.state || '',
@@ -464,7 +464,7 @@ function submitQuoteForm() {
       'Number of Dogs': dogLabel,
       'Cleanup Frequency': frequencyLabel,
       'Cleanup Areas': cleanupAreas.join(', '),
-      Price: `$${calculatedPrice}`,
+      'Estimated Price': `$${calculatedPrice}`,
       'Property Size': data.propertySize || '',
       'Special Instructions': data.specialInstructions || '',
       'Submission Time': new Date().toLocaleDateString(),
@@ -575,7 +575,7 @@ function calculatePrice() {
   const numberOfDogs =
     parseInt(document.getElementById('popupNumberOfDogs')?.value) || 1;
   const cleanupFrequency =
-    parseInt(document.getElementById('popupCleanupFrequency')?.value) || 1;
+    parseInt(document.getElementById('popupCleanupFrequency')?.value) || 0;
   const cleanupAreas = document.querySelectorAll(
     'input[name="cleanupAreas"]:checked'
   );
@@ -616,8 +616,8 @@ function calculatePrice() {
     },
     5: {
       // 5 dogs (extrapolated)
-      0: 45, // 1x Week
-      1: 81, // 2x Week
+      0: 40, // 1x Week
+      1: 75, // 2x Week
       2: 50, // Bi Weekly
       3: 90, // 1x Month
       4: 100, // One Time
