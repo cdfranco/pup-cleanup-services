@@ -487,24 +487,24 @@ em {
 /* Medium screens hero title styling */
 @media (min-width: 601px) and (max-width: 768px) {
   .hero-title {
-    font-size: 3.5rem !important;
-    line-height: 1.6;
+    font-size: 4.5rem !important;
+    line-height: 1.4;
   }
 }
 
 /* Tablet hero title styling */
 @media (min-width: 769px) and (max-width: 1024px) {
   .hero-title {
-    font-size: 4rem !important;
-    line-height: 1.6;
+    font-size: 5rem !important;
+    line-height: 1.4;
   }
 }
 
 /* Desktop-only hero title styling */
 @media (min-width: 1025px) {
   .hero-title {
-    font-size: 5.5rem !important;
-    line-height: 1.6;
+    font-size: 6.5rem !important;
+    line-height: 1.4;
   }
 }
 
