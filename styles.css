@@ -480,7 +480,7 @@ em {
   color: var(--white);
   text-shadow: none;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: 1px;
 }
 
@@ -488,7 +488,7 @@ em {
 @media (min-width: 601px) and (max-width: 768px) {
   .hero-title {
     font-size: 4.5rem !important;
-    line-height: 1.2;
+    line-height: 1.1;
   }
 }
 
@@ -496,7 +496,7 @@ em {
 @media (min-width: 769px) and (max-width: 899px) {
   .hero-title {
     font-size: 5rem !important;
-    line-height: 1.2;
+    line-height: 1.1;
   }
 }
 
@@ -504,7 +504,7 @@ em {
 @media (min-width: 900px) {
   .hero-title {
     font-size: 5.5rem !important;
-    line-height: 1.2 !important;
+    line-height: 1.1 !important;
   }
 }
 
@@ -512,7 +512,7 @@ em {
 @media (min-width: 1200px) {
   .hero-title {
     font-size: 6rem !important;
-    line-height: 1.2 !important;
+    line-height: 1.1 !important;
   }
 }
 
@@ -520,7 +520,7 @@ em {
 @media (min-width: 900px) {
   .hero .hero-title {
     font-size: 5.5rem !important;
-    line-height: 1.2 !important;
+    line-height: 1.1 !important;
   }
 }
 
