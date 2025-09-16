@@ -484,10 +484,10 @@ em {
   letter-spacing: 1px;
 }
 
-/* Desktop-only hero title styling - CACHE BUST */
+/* Desktop-only hero title styling */
 @media (min-width: 769px) {
   .hero-title {
-    font-size: 40rem !important;
+    font-size: 18rem !important;
     line-height: 1.6;
   }
 }
