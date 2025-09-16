@@ -475,12 +475,12 @@ em {
 
 .hero-title {
   font-family: 'Fredoka One', 'Nunito', sans-serif;
-  font-size: 10rem;
+  font-size: 14rem;
   margin-bottom: 2.5rem;
   color: var(--white);
   text-shadow: none;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.8;
   letter-spacing: 1px;
 }
 
