@@ -503,7 +503,7 @@ em {
 /* Desktop-only hero title styling */
 @media (min-width: 900px) {
   .hero-title {
-    font-size: 6.5rem !important;
+    font-size: 5.5rem !important;
     line-height: 1.2 !important;
   }
 }
@@ -511,7 +511,7 @@ em {
 /* Force desktop styling for larger screens */
 @media (min-width: 1200px) {
   .hero-title {
-    font-size: 7rem !important;
+    font-size: 6rem !important;
     line-height: 1.2 !important;
   }
 }
@@ -519,7 +519,7 @@ em {
 /* Override mobile styles for desktop */
 @media (min-width: 900px) {
   .hero .hero-title {
-    font-size: 6.5rem !important;
+    font-size: 5.5rem !important;
     line-height: 1.2 !important;
   }
 }
