@@ -1834,7 +1834,7 @@ em {
   }
 
   .hero-title {
-    font-size: 4.2rem;
+    font-size: 2.5rem;
     line-height: 0.85;
   }
   
@@ -2004,7 +2004,7 @@ em {
   }
 
   .hero-title {
-    font-size: 3.5rem;
+    font-size: 2rem;
     line-height: 0.85;
   }
   
@@ -2021,7 +2021,7 @@ em {
 /* Extra small mobile devices */
 @media (max-width: 360px) {
   .hero-title {
-    font-size: 3rem;
+    font-size: 1.8rem;
     line-height: 0.9;
   }
   
