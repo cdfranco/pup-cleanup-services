@@ -488,7 +488,7 @@ em {
 @media (min-width: 769px) {
   .hero-title {
     font-size: 7.5rem !important;
-    line-height: 1.6;
+    line-height: 1.2;
   }
 }
 
