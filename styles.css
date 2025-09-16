@@ -475,7 +475,7 @@ em {
 
 .hero-title {
   font-family: 'Fredoka One', 'Nunito', sans-serif;
-  font-size: 20rem;
+  font-size: 20rem !important;
   margin-bottom: 2.5rem;
   color: var(--white);
   text-shadow: none;
@@ -484,10 +484,10 @@ em {
   letter-spacing: 1px;
 }
 
-/* Desktop-only hero title styling */
+/* Desktop-only hero title styling - CACHE BUST */
 @media (min-width: 769px) {
   .hero-title {
-    font-size: 24rem;
+    font-size: 40rem !important;
     line-height: 1.6;
   }
 }
