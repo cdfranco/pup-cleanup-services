@@ -1051,6 +1051,7 @@ em {
 .testimonial {
   padding: 120px 0;
   background: var(--light-gray);
+  display: none;
 }
 
 .testimonial-content {
