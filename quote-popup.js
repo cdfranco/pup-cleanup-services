@@ -660,28 +660,11 @@ function calculatePrice() {
   }
 }
 
-// Initialize scroll trigger
+// Initialize scroll trigger - DISABLED
 function initializeScrollTrigger() {
-  let popupShown = false;
-  const scheduleSection = document.querySelector('.schedule');
-
-  if (!scheduleSection) return;
-
-  window.addEventListener('scroll', function () {
-    if (popupShown) return; // Only show once per session
-
-    const scheduleBottom =
-      scheduleSection.offsetTop + scheduleSection.offsetHeight;
-    const scrollPosition = window.pageYOffset + window.innerHeight;
-
-    // Show popup when user scrolls past the "Personalized Cleanups for Your Needs" section
-    if (scrollPosition > scheduleBottom) {
-      popupShown = true;
-      setTimeout(() => {
-        showQuotePopup();
-      }, 1000); // Small delay for better UX
-    }
-  });
+  // Scroll trigger disabled to prevent performance issues
+  // The popup is now hidden via CSS
+  return;
 }
 
 // Show notification

@@ -231,14 +231,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.body.appendChild(scrollToTopBtn);
 
-  // Show/hide button based on scroll position
-  window.addEventListener('scroll', function () {
+  // Show/hide button based on scroll position - Optimized with throttling
+  let scrollTicking = false;
+  function updateScrollButton() {
     if (window.pageYOffset > 300) {
       scrollToTopBtn.style.opacity = '1';
       scrollToTopBtn.style.visibility = 'visible';
     } else {
       scrollToTopBtn.style.opacity = '0';
       scrollToTopBtn.style.visibility = 'hidden';
+    }
+    scrollTicking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!scrollTicking) {
+      requestAnimationFrame(updateScrollButton);
+      scrollTicking = true;
     }
   });
 
@@ -279,17 +288,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Navbar Background on Scroll
+// Navbar Background on Scroll - Optimized with throttling
 document.addEventListener('DOMContentLoaded', function () {
   const navbar = document.querySelector('.navbar');
 
-  window.addEventListener('scroll', function () {
+  let navbarTicking = false;
+  function updateNavbar() {
     if (window.scrollY > 50) {
       navbar.style.background = 'rgba(255, 255, 255, 0.95)';
       navbar.style.backdropFilter = 'blur(10px)';
     } else {
       navbar.style.background = '#ffffff';
       navbar.style.backdropFilter = 'none';
+    }
+    navbarTicking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!navbarTicking) {
+      requestAnimationFrame(updateNavbar);
+      navbarTicking = true;
     }
   });
 });
@@ -362,12 +380,14 @@ function formatPhoneNumber(phoneNumberString) {
   return null;
 }
 
-// Paw Trail Scroll Animation
+// Paw Trail Scroll Animation - Optimized with throttling
 document.addEventListener('DOMContentLoaded', function () {
   const pawPrints = document.querySelectorAll('.paw-print');
 
   if (pawPrints.length > 0) {
-    window.addEventListener('scroll', function () {
+    let ticking = false;
+    
+    function updatePawTrail() {
       const scrollY = window.pageYOffset;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
@@ -395,6 +415,15 @@ document.addEventListener('DOMContentLoaded', function () {
         paw.style.transform = `scale(${sizeMultiplier})`;
         paw.style.opacity = Math.max(opacity, 0.1); // Minimum opacity of 0.1
       });
+      
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(updatePawTrail);
+        ticking = true;
+      }
     });
   }
 });
